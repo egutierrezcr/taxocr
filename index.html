@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anfibios de Costa Rica — Guía Natural Interactiva</title>
+<meta name="description" content="Guía interactiva de anfibios de Costa Rica con fotografías reales, mapas de distribución, comparación de tamaños y sonidos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f5ef;--bg2:#f0ece4;--surface:#fff;--surface2:#faf7f2;
+  --border:#ddd8ce;--border2:#e8e4db;
+  --text:#1a1a2e;--text2:#4a4a5a;--text3:#8a8a96;
+  --green:#2d6a4f;--green2:#40916c;--green3:#e8f5e9;
+  --red:#c1272d;--gold:#b8860b;--blue:#2c5282;--cyan:#0891b2;
+  --font-head:'Playfair Display',Georgia,serif;
+  --font-body:'Source Sans 3','Segoe UI',sans-serif;
+  --font-sci:'EB Garamond','Times New Roman',serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65}
+h1,h2,h3{font-family:var(--font-head)}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font-family:var(--font-body);cursor:pointer;border:none;background:none;color:var(--text)}
+img{max-width:100%;display:block}
+
+/* Header */
+header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo h1{font-size:22px;font-weight:700;color:var(--green)}
+.logo .sub{font-size:12px;color:var(--text3);font-family:var(--font-body);font-weight:400;letter-spacing:.5px}
+.lang-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-left:auto}
+.lang-btn{padding:6px 12px;font-size:12px;font-weight:600;transition:.2s;border-right:1px solid var(--border)}
+.lang-btn:last-child{border-right:none}
+.lang-btn.active{background:var(--green);color:#fff}
+.lang-btn:hover:not(.active){background:var(--bg2)}
+.nav-views{display:flex;gap:2px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.nav-btn{padding:6px 14px;font-size:13px;font-weight:500;transition:.2s}
+.nav-btn.active{background:var(--green);color:#fff}
+.nav-btn:hover:not(.active){background:var(--bg2)}
+.search-box{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:6px;padding:5px 12px;min-width:180px;transition:.2s}
+.search-box:focus-within{border-color:var(--green);box-shadow:0 0 0 2px rgba(45,106,79,.12)}
+.search-box input{background:none;border:none;outline:none;color:var(--text);font-size:13px;width:100%}
+.search-box input::placeholder{color:var(--text3)}
+
+/* Subtitle Bar */
+.info-bar{max-width:1200px;margin:0 auto;padding:14px 24px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.stat{font-size:13px;color:var(--text2)}.stat b{color:var(--green)}
+.filter-pills{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.pill{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border);transition:.2s}
+.pill:hover,.pill.active{border-color:var(--green);color:var(--green);background:var(--green3)}
+
+/* Grid */
+#grid-view{max-width:1200px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+
+/* Card */
+.card{background:var(--surface);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;border:1px solid var(--border2)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.card-img{width:100%;aspect-ratio:4/3;background:var(--bg2);overflow:hidden;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card:hover .card-img img{transform:scale(1.05)}
+.card-img .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,var(--bg2),var(--surface2))}
+.card-num{position:absolute;top:8px;left:10px;font-family:var(--font-mono);font-size:11px;background:rgba(255,255,255,.85);padding:1px 7px;border-radius:4px;color:var(--text2);backdrop-filter:blur(4px)}
+.card-iucn{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;backdrop-filter:blur(4px)}
+.iucn-lc{background:rgba(45,106,79,.15);color:var(--green)}
+.iucn-dd{background:rgba(138,138,150,.15);color:var(--text3)}
+.card-body{padding:14px 16px}
+.card-common{font-family:var(--font-head);font-size:15px;font-weight:600;line-height:1.3;color:var(--text)}
+.card-sci{font-family:var(--font-sci);font-size:13px;color:var(--green);font-style:italic;margin-top:2px}
+.card-meta{display:flex;gap:12px;font-size:12px;color:var(--text3);margin-top:8px}
+.card-family{font-size:11px;color:var(--text3);margin-top:4px;font-family:var(--font-mono)}
+.card-badge{display:inline-block;font-size:10px;font-weight:600;padding:1px 6px;border-radius:3px;margin-top:6px;background:rgba(193,39,45,.1);color:var(--red)}
+.card-sound{position:absolute;bottom:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:14px;transition:.2s;backdrop-filter:blur(4px);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.card-sound:hover{background:var(--green);color:#fff;transform:scale(1.1)}
+.card-sound.playing{background:var(--green);color:#fff;animation:pulse-ring 1.5s infinite}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(45,106,79,.3)}100%{box-shadow:0 0 0 12px transparent}}
+
+/* Detail Overlay */
+#detail{position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;display:none}
+#detail.open{display:block}
+.det-inner{max-width:1100px;margin:0 auto;padding:20px 24px 60px}
+.det-top{display:flex;align-items:center;gap:12px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:14px}
+.det-back{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:.2s}
+.det-back:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.det-num{font-family:var(--font-mono);color:var(--text3);font-size:12px}
+.det-name{font-family:var(--font-head);font-size:24px;font-weight:700;flex:1}
+.det-lang{margin-left:0!important;flex-shrink:0}
+.det-arrows{display:flex;gap:6px}
+.det-arrow{width:32px;height:32px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:.2s}
+.det-arrow:hover{background:var(--green);color:#fff;border-color:var(--green)}
+
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+/* Photo Panel */
+.det-photo{border-radius:var(--radius);overflow:hidden;background:var(--surface);border:1px solid var(--border2);position:relative}
+.det-photo-main{width:100%;aspect-ratio:4/3;background:var(--bg2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.det-photo-main img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .3s}
+.det-photo-main img:hover{transform:scale(1.03)}
+.det-photo-main .ph{font-size:80px}
+.det-photo-thumbs{display:flex;gap:4px;padding:6px;background:var(--surface2);overflow-x:auto}
+.det-photo-thumbs img{width:60px;height:45px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:.2s;opacity:.7;flex-shrink:0}
+.det-photo-thumbs img:hover,.det-photo-thumbs img.active{opacity:1;border-color:var(--green)}
+.det-viewer-tabs{display:flex;gap:4px;padding:6px 6px 0;background:var(--surface2)}
+.vtab{font-size:11px;font-weight:600;padding:5px 11px;border-radius:6px 6px 0 0;color:var(--text2);background:var(--bg2);display:flex;align-items:center;gap:5px}
+.vtab.active{background:var(--surface);color:var(--green);box-shadow:0 -2px 0 var(--green) inset}
+.vtab-n{font-size:10px;background:var(--green3);color:var(--green);border-radius:8px;padding:0 5px;font-weight:700}
+.vtab-3d[disabled]{opacity:.5;cursor:not-allowed}
+.vtab-3d:not([disabled]){cursor:pointer}
+.vtab-new{background:var(--red)!important;color:#fff!important;font-size:8px!important;letter-spacing:.5px}
+.det-3d-wrap{position:relative;width:100%;aspect-ratio:4/3;background:linear-gradient(160deg,#eef3ee,#dfe9e0)}
+.det-3d-wrap model-viewer{width:100%;height:100%;--poster-color:transparent}
+.det-3d-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text2);background:rgba(255,255,255,.8);padding:2px 8px;border-radius:10px;backdrop-filter:blur(4px);pointer-events:none}
+.det-3d-loading{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text3);background:var(--surface2)}
+.photo-count{position:absolute;bottom:8px;left:8px;font-size:11px;font-family:var(--font-mono);background:rgba(255,255,255,.85);padding:1px 7px;border-radius:4px;color:var(--text2);backdrop-filter:blur(4px)}
+.det-photo-credit{font-size:10px;color:var(--text3);padding:6px 10px;background:var(--surface2);border-top:1px solid var(--border2)}
+.photo-nav{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:.2s;backdrop-filter:blur(4px)}
+.photo-nav:hover{background:var(--green);color:#fff}
+.photo-nav.prev{left:8px}
+.photo-nav.next{right:8px}
+
+/* Bio Panel */
+.det-bio{display:flex;flex-direction:column;gap:16px}
+.bio-card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border2)}
+.bio-card h3{font-size:14px;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:6px;letter-spacing:.5px}
+.bio-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid var(--border2)}
+.bio-row:last-child{border:none}
+.bio-label{color:var(--text3)}
+.bio-val{font-weight:500;text-align:right;max-width:55%}
+.bio-val.sci{font-family:var(--font-sci);font-style:italic;color:var(--green)}
+.bio-desc{font-size:14px;color:var(--text2);line-height:1.75}
+.bio-fact{font-size:13px;color:var(--green2);margin-top:8px;padding:8px 10px;background:var(--green3);border-radius:6px;border-left:3px solid var(--green)}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-noc{background:#e8eaf6;color:var(--blue)}.tag-diu{background:#fff8e1;color:var(--gold)}
+.tag-arb{background:var(--green3);color:var(--green)}.tag-ter{background:#f3e5f5;color:#7b1fa2}
+.tag-tox{background:#ffebee;color:var(--red)}.tag-aqu{background:#e0f7fa;color:var(--cyan)}
+
+/* Sound */
+.snd-card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border2)}
+.snd-card h3{font-size:14px;color:var(--green);margin-bottom:10px}
+.snd-desc{font-size:13px;color:var(--text2);padding:8px 10px;background:var(--surface2);border-radius:6px;border-left:3px solid var(--green);margin-bottom:10px}
+.snd-list{display:flex;flex-direction:column;gap:10px}
+.snd-item{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px}
+.snd-item-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px}
+.snd-src{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.3px}
+.snd-src-xc{background:rgba(45,106,79,.14);color:var(--green)}
+.snd-src-inat{background:rgba(8,145,178,.14);color:var(--cyan)}
+.snd-type{font-size:11px;color:var(--text2);font-style:italic}
+.snd-loc{font-size:11px;color:var(--text3);margin-left:auto}
+.snd-item audio{width:100%;height:34px;display:block}
+.snd-cred{font-size:10px;color:var(--text3);margin-top:6px;line-height:1.4}
+.snd-cred a{color:var(--green)}
+.snd-none{font-size:13px;color:var(--text3);padding:10px;background:var(--surface2);border-radius:8px;text-align:center}
+.card-sound.noaudio,.list-snd.noaudio{opacity:.4;cursor:default}
+.card-sound.noaudio:hover{background:rgba(255,255,255,.9);color:inherit;transform:none}
+.list-snd.noaudio:hover{background:none;color:inherit;border-color:var(--border)}
+
+/* Anatomy */
+.anat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.anat-item{background:var(--surface2);padding:10px;border-radius:6px}
+.anat-item h4{font-size:11px;color:var(--green);font-family:var(--font-mono);margin-bottom:3px;font-weight:600}
+.anat-item p{font-size:12px;color:var(--text2);line-height:1.4}
+
+/* Size */
+.size-card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border2)}
+.size-card h3{font-size:14px;color:var(--green);margin-bottom:10px}
+.size-display{display:flex;align-items:flex-end;justify-content:center;gap:28px;padding:16px;background:var(--surface2);border-radius:8px;min-height:100px}
+.size-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.size-circle{border-radius:50%;border:2px solid}
+.size-frog{border-color:var(--green);background:rgba(45,106,79,.08);display:flex;align-items:center;justify-content:center}
+.size-frog-photo{border-radius:10px;overflow:hidden;border:2px solid var(--green);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.size-frog-photo img{width:100%;height:100%;object-fit:cover}
+.size-coin{border-color:var(--gold);background:rgba(184,134,11,.08);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold)}
+.size-label{font-size:10px;color:var(--text3);text-align:center}
+.size-btns{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.size-btn{padding:4px 10px;border-radius:4px;font-size:11px;border:1px solid var(--border);transition:.2s}
+.size-btn:hover,.size-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,134,11,.06)}
+
+/* Map */
+.map-card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border2);grid-column:1/-1}
+.map-card h3{font-size:14px;color:var(--green);margin-bottom:10px}
+.map-wrap{display:flex;gap:20px;flex-wrap:wrap}
+.map-svg{flex:1;min-width:280px;background:var(--surface2);border-radius:8px;padding:12px}
+.map-svg svg{width:100%;height:auto}
+.map-svg svg path{transition:fill .3s,stroke .3s}
+.map-info{flex:0 0 180px;display:flex;flex-direction:column;gap:4px}
+.map-prov{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
+.map-dot{width:10px;height:10px;border-radius:2px}
+.map-dot.on{background:var(--green)}.map-dot.off{background:var(--border)}
+.map-elev{font-size:12px;color:var(--text2);margin-top:10px;padding:8px;background:var(--surface2);border-radius:6px}
+
+/* List View */
+#list-view{max-width:900px;margin:0 auto;padding:16px 24px;display:none}
+.list-head{margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--green)}
+.list-head h2{font-size:18px;color:var(--green)}.list-head p{font-size:12px;color:var(--text3)}
+.list-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;background:var(--surface);margin-bottom:4px;border:1px solid var(--border2);transition:.2s;cursor:pointer}
+.list-row:hover{border-color:var(--green);box-shadow:var(--shadow)}
+.list-num{font-family:var(--font-mono);color:var(--text3);font-size:11px;min-width:32px}
+.list-photo{width:44px;height:44px;border-radius:6px;object-fit:cover;background:var(--bg2);flex-shrink:0}
+.list-names{flex:1;min-width:0}
+.list-common{font-size:14px;font-weight:600}
+.list-sci{font-family:var(--font-sci);font-size:12px;color:var(--green);font-style:italic}
+.list-snd{width:34px;height:34px;min-width:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;transition:.2s}
+.list-snd:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.list-snd.playing{background:var(--green);color:#fff;animation:pulse-ring 1.5s infinite}
+.list-size{font-size:11px;color:var(--text3);font-family:var(--font-mono);min-width:55px;text-align:right}
+
+/* Footer */
+footer{text-align:center;padding:32px 24px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);margin-top:32px}
+
+/* Lightbox */
+#lightbox{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px}
+
+/* Responsive */
+@media(max-width:768px){
+  .header-inner{gap:8px}.logo h1{font-size:18px}
+  .det-grid{grid-template-columns:1fr}
+  #grid-view{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .map-wrap{flex-direction:column}.map-info{flex:none}
+  .anat-grid{grid-template-columns:1fr}
+  .det-name{font-size:18px}
+}
+@media(max-width:480px){
+  #grid-view{grid-template-columns:1fr;padding:12px}
+  header .search-box{min-width:100%}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="logo">
+   <h1 data-t="title">Anfibios de Costa Rica</h1>
+   <span class="sub" data-t="subtitle">Guía Natural Interactiva</span>
+  </div>
+  <div class="lang-toggle">
+   <button class="lang-btn active" data-lang="es">ES</button>
+   <button class="lang-btn" data-lang="en">EN</button>
+   <button class="lang-btn" data-lang="fr">FR</button>
+  </div>
+  <nav class="nav-views">
+   <button class="nav-btn active" data-view="grid" data-t="catalog">Catálogo</button>
+   <button class="nav-btn" data-view="list" data-t="fieldGuide">Guía de Campo</button>
+  </nav>
+  <div class="search-box">
+   <span>🔍</span>
+   <input id="search" type="text" data-t-ph="searchPh" placeholder="Buscar especie...">
+  </div>
+ </div>
+</header>
+<div class="info-bar">
+ <span class="stat"><b id="sp-count">21</b> <span data-t="speciesReg">especies registradas</span></span>
+ <span class="stat"><b>7</b> <span data-t="families">familias</span></span>
+ <div class="filter-pills">
+  <button class="pill active" data-f="all" data-t="all">Todos</button>
+  <button class="pill" data-f="rana" data-t="frogs">Ranas</button>
+  <button class="pill" data-f="sapo" data-t="toads">Sapos</button>
+  <button class="pill" data-f="noc" data-t="nocturnal">Nocturnos</button>
+  <button class="pill" data-f="diu" data-t="diurnal">Diurnos</button>
+  <button class="pill" data-f="tox" data-t="toxic">Tóxicos</button>
+ </div>
+</div>
+
+<div id="grid-view"></div>
+<div id="list-view">
+ <div class="list-head"><h2 data-t="fieldGuideTitle">Guía de Campo Sonora</h2><p data-t="fieldGuideSub">Reproduce los cantos para identificación en campo</p></div>
+ <div id="list-rows"></div>
+</div>
+
+<!-- Detail -->
+<div id="detail">
+ <div class="det-inner">
+  <div class="det-top">
+   <button class="det-back" id="det-close">←</button>
+   <span class="det-num" id="det-num"></span>
+   <h2 class="det-name" id="det-name"></h2>
+   <div class="lang-toggle det-lang">
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+   </div>
+   <div class="det-arrows">
+    <button class="det-arrow" id="det-prev">◀</button>
+    <button class="det-arrow" id="det-next">▶</button>
+   </div>
+  </div>
+  <div class="det-grid">
+   <div class="det-photo" id="det-photo"></div>
+   <div class="det-bio" id="det-bio"></div>
+   <div class="snd-card" id="det-snd"></div>
+   <div class="bio-card" id="det-anat"></div>
+   <div class="size-card" id="det-size"></div>
+   <div class="map-card" id="det-map"></div>
+  </div>
+ </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox"><img id="lb-img" src="" alt=""></div>
+
+<footer>
+ <p data-t="footerLine1">Anfibios de Costa Rica — Guía Natural Interactiva</p>
+ <p style="margin-top:4px" data-t="footerLine2">Fotografías: Registro de Anfibios de Costa Rica · Sonidos: Xeno-Canto / CROAC</p>
+</footer>
+
+<script type="module">
+// ======================================================
+// TRANSLATIONS
+// ======================================================
+const UI = {
+ es:{title:"Anfibios de Costa Rica",subtitle:"Guía Natural Interactiva",catalog:"Catálogo",fieldGuide:"Guía de Campo",searchPh:"Buscar especie...",speciesReg:"especies registradas",families:"familias",all:"Todos",frogs:"Ranas",toads:"Sapos",nocturnal:"Nocturnos",diurnal:"Diurnos",toxic:"Tóxicos",bioData:"Datos Biológicos",sciName:"Nombre científico",engName:"Nombre en inglés",family:"Familia",order:"Orden",sizeSVL:"Tamaño (SVL)",elevation:"Elevación",habitat:"Hábitat",activity:"Actividad",diet:"Dieta",iucnStatus:"Estado UICN",description:"Descripción",anatomy:"Anatomía",sound:"Sonido / Canto",callType:"Tipo de canto",frequency:"Frecuencia",listenXC:"Escuchar en Xeno-Canto",appCROAC:"App CROAC (CR)",sizeComp:"Comparación de Tamaño",avgSize:"Tamaño promedio",range:"Rango",distribution:"Distribución en Costa Rica",provinces:"Provincias",elevRange:"Rango altitudinal",nocturnalTag:"Nocturno",diurnalTag:"Diurno",arboreal:"Arbóreo",terrestrial:"Terrestre",toxicTag:"Tóxico",leastConcern:"Preocupación Menor",dataDeficient:"Datos Insuficientes",fieldGuideTitle:"Guía de Campo Sonora",fieldGuideSub:"Reproduce los cantos para identificación en campo",footerLine1:"Anfibios de Costa Rica — Guía Natural Interactiva",footerLine2:"Fotografías: Registro de Anfibios de Costa Rica · Sonidos: Xeno-Canto / CROAC",eyes:"Ojos",skin:"Piel",legs:"Patas",bodyA:"Cuerpo",corrected:"Corregido",pending:"Pendiente"},
+ en:{title:"Amphibians of Costa Rica",subtitle:"Interactive Natural Guide",catalog:"Catalog",fieldGuide:"Field Guide",searchPh:"Search species...",speciesReg:"species registered",families:"families",all:"All",frogs:"Frogs",toads:"Toads",nocturnal:"Nocturnal",diurnal:"Diurnal",toxic:"Toxic",bioData:"Biological Data",sciName:"Scientific name",engName:"English name",family:"Family",order:"Order",sizeSVL:"Size (SVL)",elevation:"Elevation",habitat:"Habitat",activity:"Activity",diet:"Diet",iucnStatus:"IUCN Status",description:"Description",anatomy:"Anatomy",sound:"Sound / Call",callType:"Call type",frequency:"Frequency",listenXC:"Listen on Xeno-Canto",appCROAC:"CROAC App (CR)",sizeComp:"Size Comparison",avgSize:"Average size",range:"Range",distribution:"Distribution in Costa Rica",provinces:"Provinces",elevRange:"Elevation range",nocturnalTag:"Nocturnal",diurnalTag:"Diurnal",arboreal:"Arboreal",terrestrial:"Terrestrial",toxicTag:"Toxic",leastConcern:"Least Concern",dataDeficient:"Data Deficient",fieldGuideTitle:"Sound Field Guide",fieldGuideSub:"Play calls for field identification",footerLine1:"Amphibians of Costa Rica — Interactive Natural Guide",footerLine2:"Photos: Costa Rica Amphibian Registry · Sounds: Xeno-Canto / CROAC",eyes:"Eyes",skin:"Skin",legs:"Legs",bodyA:"Body",corrected:"Corrected",pending:"Pending"},
+ fr:{title:"Amphibiens du Costa Rica",subtitle:"Guide Naturel Interactif",catalog:"Catalogue",fieldGuide:"Guide de Terrain",searchPh:"Rechercher une espèce...",speciesReg:"espèces enregistrées",families:"familles",all:"Tous",frogs:"Grenouilles",toads:"Crapauds",nocturnal:"Nocturnes",diurnal:"Diurnes",toxic:"Toxiques",bioData:"Données Biologiques",sciName:"Nom scientifique",engName:"Nom anglais",family:"Famille",order:"Ordre",sizeSVL:"Taille (SVL)",elevation:"Altitude",habitat:"Habitat",activity:"Activité",diet:"Régime",iucnStatus:"Statut UICN",description:"Description",anatomy:"Anatomie",sound:"Son / Chant",callType:"Type de chant",frequency:"Fréquence",listenXC:"Écouter sur Xeno-Canto",appCROAC:"App CROAC (CR)",sizeComp:"Comparaison de Taille",avgSize:"Taille moyenne",range:"Intervalle",distribution:"Distribution au Costa Rica",provinces:"Provinces",elevRange:"Intervalle altitudinal",nocturnalTag:"Nocturne",diurnalTag:"Diurne",arboreal:"Arboricole",terrestrial:"Terrestre",toxicTag:"Toxique",leastConcern:"Préoccupation Mineure",dataDeficient:"Données Insuffisantes",fieldGuideTitle:"Guide Sonore de Terrain",fieldGuideSub:"Écoutez les chants pour identification sur le terrain",footerLine1:"Amphibiens du Costa Rica — Guide Naturel Interactif",footerLine2:"Photos : Registre des Amphibiens du Costa Rica · Sons : Xeno-Canto / CROAC",eyes:"Yeux",skin:"Peau",legs:"Pattes",bodyA:"Corps",corrected:"Corrigé",pending:"En attente"}
+};
+// Extra keys for the local audio player (added separately to keep the blocks above readable)
+UI.es.noAudio="No hay grabación disponible para esta especie todavía.";
+UI.en.noAudio="No recording available for this species yet.";
+UI.fr.noAudio="Aucun enregistrement disponible pour cette espèce pour le moment.";
+UI.es.recordings="Grabaciones"; UI.en.recordings="Recordings"; UI.fr.recordings="Enregistrements";
+UI.es.playCall="Reproducir canto"; UI.en.playCall="Play call"; UI.fr.playCall="Écouter le chant";
+UI.es.photos="Fotos"; UI.en.photos="Photos"; UI.fr.photos="Photos";
+UI.es.photoRegistry="Registro fotográfico de Anfibios de Costa Rica"; UI.en.photoRegistry="Costa Rica Amphibian photographic registry"; UI.fr.photoRegistry="Registre photographique des amphibiens du Costa Rica";
+UI.es.soon3d="Próximamente: modelo 3D entrenado con múltiples imágenes"; UI.en.soon3d="Coming soon: 3D model trained from multiple images"; UI.fr.soon3d="Bientôt : modèle 3D entraîné à partir de plusieurs images";
+UI.es.viewObs="ver"; UI.en.viewObs="view"; UI.fr.viewObs="voir";
+UI.es.drag3d="Arrastra para rotar · rueda para zoom"; UI.en.drag3d="Drag to rotate · scroll to zoom"; UI.fr.drag3d="Glisser pour tourner · molette pour zoomer";
+UI.es.footerLine2="Fotografías: Registro de Anfibios de Costa Rica · Sonidos: Xeno-Canto e iNaturalist (CC)";
+UI.en.footerLine2="Photos: Costa Rica Amphibian Registry · Sounds: Xeno-Canto & iNaturalist (CC)";
+UI.fr.footerLine2="Photos : Registre des Amphibiens du Costa Rica · Sons : Xeno-Canto et iNaturalist (CC)";
+let lang = 'es';
+function t(k){ return UI[lang][k] || UI.es[k] || k }
+
+// ======================================================
+// SPECIES DATA
+// ======================================================
+const SP = [
+{id:1,sci:"Agalychnis callidryas",fam:"Phyllomedusidae",ord:"Anura",
+ n:{es:"Rana de Ojos Rojos",en:"Red-eyed Tree Frog",fr:"Rainette aux yeux rouges"},
+ sMin:50,sMax:77,elev:"0–1,250 m",iucn:"LC",act:"noc",tox:false,type:"tree",
+ hab:{es:"Bosque tropical húmedo, tierras bajas y premontano",en:"Tropical moist forest, lowland and premontane",fr:"Forêt tropicale humide, basses terres et prémontagnard"},
+ diet:{es:"Insectos, arañas, polillas",en:"Insects, spiders, moths",fr:"Insectes, araignées, papillons de nuit"},
+ desc:{es:"Ícono de Costa Rica. Sus ojos rojos actúan como defensa de sobresalto contra depredadores. Deposita huevos sobre hojas encima del agua.",en:"Icon of Costa Rica. Its bright red eyes serve as a startle defense against predators. Lays eggs on leaves overhanging water.",fr:"Icône du Costa Rica. Ses yeux rouges servent de défense de surprise contre les prédateurs. Pond ses œufs sur des feuilles au-dessus de l'eau."},
+ fact:{es:"Al ser perturbada, abre sus ojos rojos de golpe para asustar a depredadores.",en:"When disturbed, it flashes its red eyes to startle predators — a startle defense.",fr:"Lorsqu'elle est dérangée, elle ouvre brusquement ses yeux rouges pour effrayer les prédateurs."},
+ call:{es:"'Chack-chack' corto y repetitivo. Machos vocalizan desde vegetación sobre agua.",en:"Short repetitive 'chack-chack'. Males call from vegetation above water.",fr:"'Chack-chack' court et répétitif. Les mâles vocalisent depuis la végétation au-dessus de l'eau."},
+ freq:"1.0–2.5 kHz",
+ anat:{es:{e:"Grandes, rojo intenso con pupila vertical",p:"Lisa, verde brillante dorsal; flancos azul y amarillo",pa:"Largas con ventosas adhesivas anaranjadas",c:"Esbelto, adaptado para vida arbórea"},en:{e:"Large, bright red with vertical pupil",p:"Smooth, bright green dorsum; blue and yellow flanks",pa:"Long with orange adhesive toe pads",c:"Slender, adapted for arboreal life"},fr:{e:"Grands, rouge vif avec pupille verticale",p:"Lisse, vert brillant dorsal; flancs bleus et jaunes",pa:"Longues avec ventouses adhésives orangées",c:"Svelte, adapté à la vie arboricole"}},
+ reg:["ca","zn","ps","pc"],emoji:"🐸",img:"agalychnis-callidryas.jpg"},
+{id:2,sci:"Teratohyla pulverata",fam:"Centrolenidae",ord:"Anura",
+ n:{es:"Rana de Cristal de Chiriquí",en:"Chiriquí Glass Frog",fr:"Grenouille de verre de Chiriquí"},
+ sMin:23,sMax:30,elev:"0–800 m",iucn:"LC",act:"noc",tox:false,type:"glass",
+ hab:{es:"Bosque húmedo, riberas de ríos",en:"Moist forest, riverbanks",fr:"Forêt humide, rives de rivières"},
+ diet:{es:"Insectos pequeños, arañas",en:"Small insects, spiders",fr:"Petits insectes, araignées"},
+ desc:{es:"Su vientre transparente permite ver el corazón latiendo y los órganos internos.",en:"Its transparent belly allows seeing the beating heart and internal organs.",fr:"Son ventre transparent permet de voir le cœur battre et les organes internes."},
+ fact:{es:"Los machos cuidan los huevos protegiéndolos de avispas parasitoides.",en:"Males guard eggs, protecting them from parasitoid wasps.",fr:"Les mâles gardent les œufs en les protégeant des guêpes parasitoïdes."},
+ call:{es:"Serie rápida de notas agudas 'tiiip tiiip'.",en:"Rapid series of high-pitched 'tiiip tiiip' notes.",fr:"Série rapide de notes aiguës 'tiiip tiiip'."},
+ freq:"4.5–6.0 kHz",
+ anat:{es:{e:"Saltones, dorados",p:"Translúcida verde con puntos blancos",pa:"Delgadas con ventosas pequeñas",c:"Extremadamente delicado, vientre transparente"},en:{e:"Bulging, golden",p:"Translucent green with white dots",pa:"Thin with small toe pads",c:"Extremely delicate, transparent belly"},fr:{e:"Globuleux, dorés",p:"Vert translucide avec points blancs",pa:"Fines avec petites ventouses",c:"Extrêmement délicat, ventre transparent"}},
+ reg:["ca","zn","ps"],emoji:"💎",img:"teratohyla-pulverata.jpg"},
+{id:3,sci:"Dendropsophus microcephalus",fam:"Hylidae",ord:"Anura",
+ n:{es:"Rana Arbórea Amarilla",en:"Yellow Treefrog",fr:"Rainette jaune"},
+ sMin:20,sMax:27,elev:"0–1,000 m",iucn:"LC",act:"noc",tox:false,type:"tree",
+ hab:{es:"Charcos temporales, pantanos, áreas abiertas",en:"Temporary ponds, marshes, open areas",fr:"Mares temporaires, marécages, zones ouvertes"},
+ diet:{es:"Insectos diminutos, mosquitos",en:"Tiny insects, mosquitoes",fr:"Insectes minuscules, moustiques"},
+ desc:{es:"Pequeña rana amarilla muy común. Forma enormes coros nocturnos junto a charcos temporales.",en:"Very common small yellow frog. Forms enormous nocturnal choruses near temporary ponds.",fr:"Petite grenouille jaune très commune. Forme d'énormes chœurs nocturnes près des mares temporaires."},
+ fact:{es:"Cabe en una moneda de 100 colones — una de las ranas más pequeñas de CR.",en:"Fits on a 100-colón coin — one of the smallest frogs in Costa Rica.",fr:"Tient sur une pièce de 100 colones — l'une des plus petites grenouilles du CR."},
+ call:{es:"Coro agudo continuo 'creek-creek-creek'.",en:"Continuous high-pitched 'creek-creek-creek' chorus.",fr:"Chœur aigu continu 'creek-creek-creek'."},
+ freq:"4.0–5.5 kHz",
+ anat:{es:{e:"Grandes para su tamaño, dorados",p:"Lisa, amarillo brillante a crema",pa:"Cortas con pequeñas ventosas",c:"Muy pequeño (< 3 cm)"},en:{e:"Large for its size, golden",p:"Smooth, bright yellow to cream",pa:"Short with small toe pads",c:"Very small (< 3 cm)"},fr:{e:"Grands pour sa taille, dorés",p:"Lisse, jaune vif à crème",pa:"Courtes avec petites ventouses",c:"Très petit (< 3 cm)"}},
+ reg:["pn","pc","ps","zn","ca"],emoji:"🌟",img:"dendropsophus-microcephalus.jpg"},
+{id:4,sci:"Smilisca baudinii",fam:"Hylidae",ord:"Anura",
+ n:{es:"Rana Arbórea Mexicana",en:"Mexican Tree Frog",fr:"Rainette mexicaine"},
+ sMin:50,sMax:90,elev:"0–1,600 m",iucn:"LC",act:"noc",tox:false,type:"tree",
+ hab:{es:"Bosques secos y húmedos, áreas perturbadas",en:"Dry and moist forests, disturbed areas",fr:"Forêts sèches et humides, zones perturbées"},
+ diet:{es:"Insectos grandes, arañas",en:"Large insects, spiders",fr:"Gros insectes, araignées"},
+ desc:{es:"Rana arbórea grande y adaptable. Coros explosivos tras las lluvias son inconfundibles.",en:"Large, adaptable tree frog. Explosive post-rain choruses are unmistakable.",fr:"Grande rainette adaptable. Les chœurs explosifs après les pluies sont incomparables."},
+ fact:{es:"Puede cambiar de color de gris claro a pardo oscuro según condiciones.",en:"Can change color from light gray to dark brown depending on conditions.",fr:"Peut changer de couleur du gris clair au brun foncé selon les conditions."},
+ call:{es:"'Wonk wonk wonk' — ladrido profundo y resonante.",en:"'Wonk wonk wonk' — deep, resonant barking.",fr:"'Wonk wonk wonk' — aboiement profond et résonant."},
+ freq:"1.0–2.0 kHz",
+ anat:{es:{e:"Grandes con pupila horizontal, dorados",p:"Ligeramente granular, gris a pardo",pa:"Robustas con grandes ventosas",c:"Grande y robusto"},en:{e:"Large with horizontal pupil, golden",p:"Slightly granular, gray to brown",pa:"Robust with large toe pads",c:"Large and robust"},fr:{e:"Grands avec pupille horizontale, dorés",p:"Légèrement granulaire, gris à brun",pa:"Robustes avec grandes ventouses",c:"Grand et robuste"}},
+ reg:["pn","pc","zn","ca"],emoji:"🌿",img:"smilisca-baudinii.jpg"},
+{id:5,sci:"Smilisca phaeota",fam:"Hylidae",ord:"Anura",
+ n:{es:"Rana Enmascarada",en:"Masked Tree Frog",fr:"Rainette masquée"},
+ sMin:48,sMax:76,elev:"0–1,500 m",iucn:"LC",act:"noc",tox:false,type:"tree",
+ hab:{es:"Bosque húmedo de tierras bajas",en:"Lowland moist forest",fr:"Forêt humide de basse altitude"},
+ diet:{es:"Insectos, arañas",en:"Insects, spiders",fr:"Insectes, araignées"},
+ desc:{es:"Reconocible por la banda oscura que cruza sus ojos como una máscara.",en:"Recognizable by the dark band across its eyes like a mask.",fr:"Reconnaissable par la bande sombre qui traverse ses yeux comme un masque."},
+ fact:{es:"Su 'máscara' oscura es única entre las ranas arbóreas de Costa Rica.",en:"Its dark 'mask' is unique among Costa Rican tree frogs.",fr:"Son 'masque' sombre est unique parmi les rainettes du Costa Rica."},
+ call:{es:"Serie de notas roncas 'wank-wank'.",en:"Series of hoarse 'wank-wank' notes.",fr:"Série de notes rauques 'wank-wank'."},
+ freq:"1.5–3.0 kHz",
+ anat:{es:{e:"Grandes, dorados con banda oscura",p:"Lisa a granular, verde",pa:"Largas con ventosas grandes",c:"Medio, atlético"},en:{e:"Large, golden with dark band",p:"Smooth to granular, green",pa:"Long with large toe pads",c:"Medium, athletic"},fr:{e:"Grands, dorés avec bande sombre",p:"Lisse à granulaire, verte",pa:"Longues avec grandes ventouses",c:"Moyen, athlétique"}},
+ reg:["ca","zn","ps"],emoji:"🎭",img:"smilisca-phaeota.jpg"},
+{id:6,sci:"Smilisca sordida",fam:"Hylidae",ord:"Anura",n:{es:"Rana Arbórea Parda",en:"Drab Tree Frog",fr:"Rainette terne"},sMin:35,sMax:50,elev:"0–1,600 m",iucn:"LC",act:"noc",tox:false,type:"tree",hab:{es:"Arroyos rocosos en bosque",en:"Rocky streams in forest",fr:"Ruisseaux rocheux en forêt"},diet:{es:"Insectos, larvas",en:"Insects, larvae",fr:"Insectes, larves"},desc:{es:"Se mimetiza perfectamente con la corteza junto a arroyos de montaña.",en:"Blends perfectly with bark along mountain streams.",fr:"Se camoufle parfaitement avec l'écorce le long des ruisseaux de montagne."},fact:{es:"Probablemente la Smilisca más abundante de Costa Rica.",en:"Probably the most abundant Smilisca in Costa Rica.",fr:"Probablement la Smilisca la plus abondante du Costa Rica."},call:{es:"Nota simple 'toc toc' junto a arroyos.",en:"Simple 'toc toc' note near streams.",fr:"Note simple 'toc toc' près des ruisseaux."},freq:"2.0–3.5 kHz",anat:{es:{e:"Medianos, dorado parduzco",p:"Granular, color corteza",pa:"Moderadas con ventosas medianas",c:"Compacto, críptico"},en:{e:"Medium, brownish-golden",p:"Granular, bark-colored",pa:"Moderate with medium toe pads",c:"Compact, cryptic"},fr:{e:"Moyens, brun doré",p:"Granulaire, couleur écorce",pa:"Modérées avec ventouses moyennes",c:"Compact, cryptique"}},reg:["pn","pc","ps","zn","ca"],emoji:"🪵",img:"smilisca-sordida.jpg"},
+{id:7,sci:"Dendropsophus ebraccatus",fam:"Hylidae",ord:"Anura",n:{es:"Rana Arbórea Amarillenta",en:"Hourglass Treefrog",fr:"Rainette sablier"},sMin:25,sMax:35,elev:"0–1,600 m",iucn:"LC",act:"noc",tox:false,type:"tree",hab:{es:"Charcos temporales, borde de bosque",en:"Temporary ponds, forest edge",fr:"Mares temporaires, lisière de forêt"},diet:{es:"Insectos pequeños",en:"Small insects",fr:"Petits insectes"},desc:{es:"Conocida como rana reloj de arena por la marca en su espalda.",en:"Known as hourglass treefrog for the marking on its back.",fr:"Connue sous le nom de rainette sablier pour la marque sur son dos."},fact:{es:"Puede poner huevos tanto acuáticos como terrestres (plasticidad reproductiva).",en:"Can lay both aquatic and terrestrial eggs (reproductive plasticity).",fr:"Peut pondre des œufs aquatiques et terrestres (plasticité reproductive)."},call:{es:"'Eek' corto y agudo, repetido rápidamente.",en:"Short, sharp 'eek' repeated rapidly.",fr:"'Eek' court et aigu, répété rapidement."},freq:"3.5–5.0 kHz",anat:{es:{e:"Grandes y saltones, dorados",p:"Lisa, crema a amarillo",pa:"Delgadas con ventosas pequeñas",c:"Pequeño y esbelto"},en:{e:"Large and bulging, golden",p:"Smooth, cream to yellow",pa:"Thin with small toe pads",c:"Small and slender"},fr:{e:"Grands et globuleux, dorés",p:"Lisse, crème à jaune",pa:"Fines avec petites ventouses",c:"Petit et svelte"}},reg:["ca","zn","ps","pc"],emoji:"⏳",img:"dendropsophus-ebraccatus.jpg"},
+{id:8,sci:"Hypopachus variolosus",fam:"Microhylidae",ord:"Anura",n:{es:"Rana Oveja Común",en:"Sheep Frog",fr:"Grenouille mouton"},sMin:30,sMax:45,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"narrow",hab:{es:"Pastizales, pozas temporales",en:"Grasslands, temporary pools",fr:"Prairies, mares temporaires"},diet:{es:"Hormigas, termitas (especialista)",en:"Ants, termites (specialist)",fr:"Fourmis, termites (spécialiste)"},desc:{es:"Su canto suena exactamente como el balido de un cordero.",en:"Its call sounds exactly like a lamb's bleat.",fr:"Son chant ressemble exactement au bêlement d'un agneau."},fact:{es:"Es mirmecófaga: come casi exclusivamente hormigas y termitas.",en:"It is myrmecophagous: feeds almost exclusively on ants and termites.",fr:"Elle est myrmécophage : se nourrit presque exclusivement de fourmis et termites."},call:{es:"Balido largo como oveja: 'baaaaaaa' (1–3 s).",en:"Long sheep-like bleat: 'baaaaaaa' (1–3 s).",fr:"Bêlement long comme un mouton : 'baaaaaaa' (1–3 s)."},freq:"2.5–4.0 kHz",anat:{es:{e:"Pequeños, oscuros",p:"Lisa, redondeada",pa:"Cortas, sin ventosas",c:"Rechoncho, cabeza diminuta"},en:{e:"Small, dark",p:"Smooth, rounded",pa:"Short, no toe pads",c:"Chubby, tiny head"},fr:{e:"Petits, sombres",p:"Lisse, arrondie",pa:"Courtes, sans ventouses",c:"Rondouillard, tête minuscule"}},reg:["pn","pc"],emoji:"🐑",img:"hypopachus-variolosus.jpg"},
+{id:9,sci:"Scinax elaeochroa",fam:"Hylidae",ord:"Anura",n:{es:"Rana Campanilla Común",en:"Olive Snouted Treefrog",fr:"Rainette olive"},sMin:25,sMax:35,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"tree",hab:{es:"Charcos, potreros inundados, cunetas",en:"Ponds, flooded pastures, ditches",fr:"Mares, pâturages inondés, fossés"},diet:{es:"Insectos voladores, mosquitos",en:"Flying insects, mosquitoes",fr:"Insectes volants, moustiques"},desc:{es:"Su canto de campanilla metálica es uno de los sonidos más frecuentes de la noche tropical.",en:"Its metallic bell-like call is one of the most common sounds of the tropical night.",fr:"Son chant de clochette métallique est l'un des sons les plus fréquents de la nuit tropicale."},fact:{es:"Es una de las primeras ranas que coloniza charcos nuevos tras las lluvias.",en:"One of the first frogs to colonize new ponds after rains.",fr:"L'une des premières grenouilles à coloniser les nouvelles mares après les pluies."},call:{es:"Campanilleo agudo 'tink-tink-tink'. Coros metálicos.",en:"High-pitched 'tink-tink-tink' bell ringing. Metallic choruses.",fr:"Tintement aigu 'tink-tink-tink'. Chœurs métalliques."},freq:"4.0–6.0 kHz",anat:{es:{e:"Medianos, dorados",p:"Lisa, verde oliva",pa:"Medianas con ventosas",c:"Esbelto con hocico alargado"},en:{e:"Medium, golden",p:"Smooth, olive green",pa:"Medium with toe pads",c:"Slender with elongated snout"},fr:{e:"Moyens, dorés",p:"Lisse, vert olive",pa:"Moyennes avec ventouses",c:"Svelte avec museau allongé"}},reg:["ca","zn","ps"],emoji:"🔔",img:"scinax-elaeochroa.jpg"},
+{id:10,sci:"Oophaga pumilio",fam:"Dendrobatidae",ord:"Anura",n:{es:"Rana Flecha Roja y Azul",en:"Strawberry Poison-dart Frog",fr:"Dendrobate fraise"},sMin:17,sMax:24,elev:"0–960 m",iucn:"LC",act:"diu",tox:true,type:"dart",hab:{es:"Suelo de bosque húmedo, hojarasca",en:"Moist forest floor, leaf litter",fr:"Sol de forêt humide, litière"},diet:{es:"Hormigas, ácaros (dieta especializada = toxicidad)",en:"Ants, mites (specialized diet = toxicity)",fr:"Fourmis, acariens (régime spécialisé = toxicité)"},desc:{es:"Rana venenosa icónica. Su color rojo brillante advierte a depredadores. Las madres transportan renacuajos a bromelias.",en:"Iconic poison frog. Its bright red color warns predators. Mothers carry tadpoles to bromeliads on their backs.",fr:"Grenouille venimeuse iconique. Sa couleur rouge vif avertit les prédateurs. Les mères transportent les têtards vers les broméliacées."},fact:{es:"Las hembras depositan cada renacuajo en una bromelia diferente y lo alimentan con huevos no fertilizados.",en:"Females deposit each tadpole in a different bromeliad and feed them with unfertilized eggs.",fr:"Les femelles déposent chaque têtard dans une broméliacée différente et le nourrissent avec des œufs non fécondés."},call:{es:"Zumbido agudo continuo 'bzzzzzzz' durante el día. Muy territorial.",en:"Continuous high-pitched buzzing 'bzzzzzzz' during the day. Highly territorial.",fr:"Bourdonnement aigu continu 'bzzzzzzz' pendant le jour. Très territorial."},freq:"4.0–5.5 kHz",anat:{es:{e:"Relativamente grandes, negros",p:"Lisa, brillante, rojo aposemático",pa:"Cortas, azul-negro, sin membranas",c:"Diminuto (< 2.5 cm), muy tóxico"},en:{e:"Relatively large, black",p:"Smooth, glossy, aposematic red",pa:"Short, blue-black, no webbing",c:"Tiny (< 2.5 cm), highly toxic"},fr:{e:"Relativement grands, noirs",p:"Lisse, brillante, rouge aposématique",pa:"Courtes, bleu-noir, sans membranes",c:"Minuscule (< 2,5 cm), très toxique"}},reg:["ca","zn"],emoji:"🔴",img:"oophaga-pumilio.jpg"},
+{id:11,sci:"Tlalocohyla loquax",fam:"Hylidae",ord:"Anura",n:{es:"Rana Arbórea Locuaz",en:"Mahogany Treefrog",fr:"Rainette bavarde"},sMin:25,sMax:38,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"tree",hab:{es:"Dosel del bosque, charcos temporales",en:"Forest canopy, temporary ponds",fr:"Canopée forestière, mares temporaires"},diet:{es:"Insectos, artrópodos pequeños",en:"Insects, small arthropods",fr:"Insectes, petits arthropodes"},desc:{es:"Extremadamente vocal. Coros rápidos de chasquidos inconfundibles en bosques de tierras bajas.",en:"Extremely vocal. Rapid clicking choruses unmistakable in lowland forests.",fr:"Extrêmement vocale. Les chœurs rapides de claquements sont incomparables dans les forêts de basse altitude."},fact:{es:"'Loquax' en latín significa 'parlanchín' — nombre muy merecido.",en:"'Loquax' in Latin means 'talkative' — a well-deserved name.",fr:"'Loquax' en latin signifie 'bavard' — un nom bien mérité."},call:{es:"Chasquidos rápidos 'clack-clack-clack' como matraca.",en:"Rapid 'clack-clack-clack' clicks like a ratchet.",fr:"Claquements rapides 'clack-clack-clack' comme une crécelle."},freq:"3.0–5.0 kHz",anat:{es:{e:"Grandes, dorados",p:"Lisa, verde intenso",pa:"Largas y delgadas con ventosas",c:"Pequeño, ágil"},en:{e:"Large, golden",p:"Smooth, intense green",pa:"Long and thin with toe pads",c:"Small, agile"},fr:{e:"Grands, dorés",p:"Lisse, vert intense",pa:"Longues et fines avec ventouses",c:"Petit, agile"}},reg:["ca","zn"],emoji:"📢",img:"tlalocohyla-loquax.jpg"},
+{id:12,sci:"Lithobates warszewitschii",fam:"Ranidae",ord:"Anura",n:{es:"Rana Brillante de Bosque",en:"Brilliant Forest Frog",fr:"Grenouille brillante de forêt"},sMin:40,sMax:65,elev:"0–1,500 m",iucn:"LC",act:"diu",tox:false,type:"true",hab:{es:"Arroyos en bosque primario y secundario",en:"Streams in primary and secondary forest",fr:"Ruisseaux en forêt primaire et secondaire"},diet:{es:"Insectos, invertebrados acuáticos",en:"Insects, aquatic invertebrates",fr:"Insectes, invertébrés aquatiques"},desc:{es:"Dorso verde metálico espectacular. Habita junto a arroyos donde caza activamente.",en:"Spectacular metallic green dorsum. Lives near streams where it actively hunts.",fr:"Dos vert métallique spectaculaire. Habite près des ruisseaux où elle chasse activement."},fact:{es:"Nombrada en honor al explorador polaco Josef von Warszewicz.",en:"Named after the Polish explorer Josef von Warszewicz.",fr:"Nommée en l'honneur de l'explorateur polonais Josef von Warszewicz."},call:{es:"'Tac' corto y espaciado junto a arroyos.",en:"Short, spaced 'tac' near streams.",fr:"'Tac' court et espacé près des ruisseaux."},freq:"2.0–3.0 kHz",anat:{es:{e:"Prominentes, oscuros con anillo dorado",p:"Lisa, verde metálico brillante",pa:"Largas y musculosas",c:"Atlético, forma clásica de rana"},en:{e:"Prominent, dark with golden ring",p:"Smooth, brilliant metallic green",pa:"Long and muscular",c:"Athletic, classic frog shape"},fr:{e:"Proéminents, sombres avec anneau doré",p:"Lisse, vert métallique brillant",pa:"Longues et musclées",c:"Athlétique, forme classique de grenouille"}},reg:["pc","ps","zn","ca"],emoji:"✨",img:"lithobates-warszewitschii.jpg"},
+{id:13,sci:"Lithobates forreri",fam:"Ranidae",ord:"Anura",n:{es:"Rana Leopardo de Forrer",en:"Forrer's Leopard Frog",fr:"Grenouille léopard de Forrer"},sMin:45,sMax:90,elev:"0–1,600 m",iucn:"LC",act:"noc",tox:false,type:"true",hab:{es:"Lagunas, pantanos, ríos, potreros inundados",en:"Lagoons, marshes, rivers, flooded pastures",fr:"Lagunes, marécages, rivières, pâturages inondés"},diet:{es:"Insectos, artrópodos, pequeños vertebrados",en:"Insects, arthropods, small vertebrates",fr:"Insectes, arthropodes, petits vertébrés"},desc:{es:"La rana leopardo de la vertiente Pacífica. Grande y ágil, salta distancias impresionantes.",en:"The Pacific slope leopard frog. Large and agile, leaps impressive distances.",fr:"La grenouille léopard du versant Pacifique. Grande et agile, saute des distances impressionnantes."},fact:{es:"Puede saltar hasta 2 metros — más de 20 veces su longitud corporal.",en:"Can leap up to 2 meters — more than 20 times its body length.",fr:"Peut sauter jusqu'à 2 mètres — plus de 20 fois sa longueur corporelle."},call:{es:"Gruñido gutural 'chuck-chuck' grave.",en:"Deep guttural 'chuck-chuck' grunt.",fr:"Grognement guttural 'chuck-chuck' grave."},freq:"0.8–2.0 kHz",anat:{es:{e:"Grandes, dorado-verdoso",p:"Lisa con pliegues dorsolaterales, manchas oscuras",pa:"Muy largas, potentes",c:"Grande, robusto"},en:{e:"Large, greenish-golden",p:"Smooth with dorsolateral folds, dark spots",pa:"Very long, powerful",c:"Large, robust"},fr:{e:"Grands, doré-verdâtre",p:"Lisse avec plis dorsolatéraux, taches sombres",pa:"Très longues, puissantes",c:"Grand, robuste"}},reg:["pn","pc"],emoji:"🐆",img:"lithobates-forreri.jpg"},
+{id:14,sci:"Leptodactylus savagei",fam:"Leptodactylidae",ord:"Anura",n:{es:"Rana Toro",en:"Savage's Thin-toed Frog",fr:"Grenouille taureau"},sMin:100,sMax:185,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"ground",hab:{es:"Suelo de bosque, orillas de ríos y charcos",en:"Forest floor, river and pond edges",fr:"Sol de forêt, bords de rivières et mares"},diet:{es:"Insectos grandes, ranas, lagartijas, ratones",en:"Large insects, frogs, lizards, mice",fr:"Gros insectes, grenouilles, lézards, souris"},desc:{es:"La rana más grande de Costa Rica. Canto nocturno potente que resuena a gran distancia.",en:"The largest frog in Costa Rica. Powerful nocturnal call resonates over long distances.",fr:"La plus grande grenouille du Costa Rica. Chant nocturne puissant qui résonne à grande distance."},fact:{es:"Las hembras construyen nidos de espuma para proteger los huevos.",en:"Females build foam nests to protect eggs from predators and desiccation.",fr:"Les femelles construisent des nids de mousse pour protéger les œufs."},call:{es:"'WUUUUP' profundo y resonante. Se escucha a cientos de metros.",en:"Deep resonant 'WUUUUP'. Audible hundreds of meters away.",fr:"'WUUUUP' profond et résonant. Audible à des centaines de mètres."},freq:"0.3–1.0 kHz",anat:{es:{e:"Grandes, dorado",p:"Lisa a rugosa, pliegues laterales",pa:"Muy robustas y musculosas",c:"El más grande de CR (hasta 18.5 cm)"},en:{e:"Large, golden",p:"Smooth to rough, lateral folds",pa:"Very robust and muscular",c:"Largest in CR (up to 18.5 cm)"},fr:{e:"Grands, dorés",p:"Lisse à rugueuse, plis latéraux",pa:"Très robustes et musclées",c:"Le plus grand du CR (jusqu'à 18,5 cm)"}},reg:["pn","pc","ps","zn","ca"],emoji:"🐂",img:"leptodactylus-savagei.jpg"},
+{id:15,sci:"Rhinella marina",fam:"Bufonidae",ord:"Anura",n:{es:"Sapo de Caña",en:"Cane Toad",fr:"Crapaud buffle"},sMin:100,sMax:240,elev:"0–2,000 m",iucn:"LC",act:"noc",tox:true,type:"toad",hab:{es:"Áreas abiertas, jardines, borde de bosque, urbano",en:"Open areas, gardens, forest edge, urban",fr:"Zones ouvertes, jardins, lisière de forêt, urbain"},diet:{es:"Omnívoro: insectos, carroña, otros sapos",en:"Omnivore: insects, carrion, other toads",fr:"Omnivore: insectes, charogne, autres crapauds"},desc:{es:"El sapo más grande de las Américas. Glándulas parotoides secretan bufotoxina. Muy común.",en:"The largest toad in the Americas. Parotoid glands secrete bufotoxin. Very common.",fr:"Le plus grand crapaud des Amériques. Les glandes parotoïdes sécrètent de la bufotoxine."},fact:{es:"Especie invasora devastadora en Australia. En Costa Rica es nativo. Su veneno puede matar perros.",en:"Devastating invasive species in Australia. Native to Costa Rica. Its venom can kill dogs.",fr:"Espèce envahissante dévastatrice en Australie. Originaire du Costa Rica. Son venin peut tuer les chiens."},call:{es:"Trino profundo y prolongado 'brrrrrrrr'.",en:"Deep, prolonged trill 'brrrrrrrr'.",fr:"Trille profond et prolongé 'brrrrrrrr'."},freq:"0.5–1.5 kHz",anat:{es:{e:"Medianos, iris dorado",p:"Muy verrugosa, grandes glándulas parotoides",pa:"Cortas y robustas",c:"Masivo (hasta 24 cm), el más pesado de CR"},en:{e:"Medium, golden iris",p:"Very warty, large parotoid glands",pa:"Short and robust",c:"Massive (up to 24 cm), heaviest in CR"},fr:{e:"Moyens, iris doré",p:"Très verruqueuse, grandes glandes parotoïdes",pa:"Courtes et robustes",c:"Massif (jusqu'à 24 cm), le plus lourd du CR"}},reg:["pn","pc","ps","zn","ca"],emoji:"🏋️",img:"rhinella-marina.jpg"},
+{id:16,sci:"Craugastor bransfordii",fam:"Craugastoridae",ord:"Anura",n:{es:"Rana de la Hojarasca",en:"Bransford's Litter Frog",fr:"Grenouille des feuilles mortes"},sMin:18,sMax:30,elev:"0–1,600 m",iucn:"LC",act:"diu",tox:false,type:"litter",hab:{es:"Hojarasca del suelo del bosque",en:"Forest floor leaf litter",fr:"Litière au sol de la forêt"},diet:{es:"Hormigas, ácaros, colémbolos",en:"Ants, mites, springtails",fr:"Fourmis, acariens, collemboles"},desc:{es:"La rana más común de Costa Rica. Desarrollo directo: huevos eclosionan como ranitas, sin renacuajo.",en:"The most common frog in Costa Rica. Direct development: eggs hatch as froglets, no tadpole stage.",fr:"La grenouille la plus commune du Costa Rica. Développement direct : les œufs éclosent en petites grenouilles."},fact:{es:"El típico 'tink frog' que todo visitante escucha en los bosques de CR.",en:"The typical 'tink frog' every visitor hears in Costa Rican forests.",fr:"La typique 'grenouille tink' que chaque visiteur entend dans les forêts du CR."},call:{es:"'Tink' agudo y metálico, repetido.",en:"High-pitched metallic 'tink', repeated.",fr:"'Tink' aigu et métallique, répété."},freq:"3.0–5.5 kHz",anat:{es:{e:"Grandes para su tamaño",p:"Granular, patrón críptico",pa:"Cortas, sin membranas ni ventosas",c:"Pequeño, aplanado"},en:{e:"Large for its size",p:"Granular, cryptic pattern",pa:"Short, no webbing or toe pads",c:"Small, flattened"},fr:{e:"Grands pour sa taille",p:"Granulaire, motif cryptique",pa:"Courtes, sans membranes ni ventouses",c:"Petit, aplati"}},reg:["ca","zn","ps"],emoji:"🍂",img:"craugastor-bransfordii.jpg"},
+{id:17,sci:"Leptodactylus melanonotus",fam:"Leptodactylidae",ord:"Anura",n:{es:"Rana Sabinal",en:"Sabinal Frog",fr:"Grenouille sabinal"},sMin:30,sMax:50,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"ground",hab:{es:"Pozas temporales, pastizales, cunetas",en:"Temporary pools, grasslands, ditches",fr:"Mares temporaires, prairies, fossés"},diet:{es:"Insectos, invertebrados del suelo",en:"Insects, soil invertebrates",fr:"Insectes, invertébrés du sol"},desc:{es:"Rana terrestre común en áreas rurales. Construye nidos de espuma en charcos temporales.",en:"Common terrestrial frog in rural areas. Builds foam nests in temporary pools.",fr:"Grenouille terrestre commune dans les zones rurales. Construit des nids de mousse dans les mares temporaires."},fact:{es:"Bate mucosidad con sus patas traseras para construir nidos de espuma, como batir claras de huevo.",en:"Beats mucus with its hind legs to build foam nests, like whipping egg whites.",fr:"Bat du mucus avec ses pattes arrière pour construire des nids de mousse, comme battre des blancs d'œufs."},call:{es:"'Whit' agudo repetido, flotando en charcos.",en:"Sharp repeated 'whit', floating in pools.",fr:"'Whit' aigu répété, flottant dans les mares."},freq:"2.5–4.0 kHz",anat:{es:{e:"Medianos, dorados",p:"Lisa a granular, parda",pa:"Moderadas, parcialmente palmeadas",c:"Mediano, robusto"},en:{e:"Medium, golden",p:"Smooth to granular, brown",pa:"Moderate, partially webbed",c:"Medium, robust"},fr:{e:"Moyens, dorés",p:"Lisse à granulaire, brune",pa:"Modérées, partiellement palmées",c:"Moyen, robuste"}},reg:["pn","pc","ps","zn","ca"],emoji:"🌾",img:"leptodactylus-melanonotus.jpg"},
+{id:18,sci:"Incilius valliceps",fam:"Bufonidae",ord:"Anura",n:{es:"Sapo del Golfo",en:"Gulf Coast Toad",fr:"Crapaud du golfe"},sMin:50,sMax:90,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:true,type:"toad",hab:{es:"Áreas abiertas, borde de bosque seco",en:"Open areas, dry forest edge",fr:"Zones ouvertes, lisière de forêt sèche"},diet:{es:"Insectos, invertebrados terrestres",en:"Insects, terrestrial invertebrates",fr:"Insectes, invertébrés terrestres"},desc:{es:"Sapo robusto del Pacífico seco. Se distingue por sus prominentes crestas craneales óseas.",en:"Robust toad of the dry Pacific. Distinguished by its prominent bony cranial crests.",fr:"Crapaud robuste du Pacifique sec. Se distingue par ses crêtes crâniennes osseuses proéminentes."},fact:{es:"Las crestas craneales le dan aspecto de llevar un casco.",en:"The cranial crests give it the appearance of wearing a helmet.",fr:"Les crêtes crâniennes lui donnent l'apparence de porter un casque."},call:{es:"Trino corto y nasal 'brrrt'.",en:"Short nasal trill 'brrrt'.",fr:"Trille court et nasal 'brrrt'."},freq:"1.5–3.0 kHz",anat:{es:{e:"Medianos, iris dorado",p:"Verrugosa, crestas craneales prominentes",pa:"Cortas y robustas",c:"Mediano-grande, con crestas óseas"},en:{e:"Medium, golden iris",p:"Warty, prominent cranial crests",pa:"Short and robust",c:"Medium-large, with bony crests"},fr:{e:"Moyens, iris doré",p:"Verruqueuse, crêtes crâniennes proéminentes",pa:"Courtes et robustes",c:"Moyen-grand, avec crêtes osseuses"}},reg:["ca","zn"],emoji:"🏛️",img:"incilius-valliceps.jpg"},
+{id:19,sci:"Pristimantis ridens",fam:"Strabomantidae",ord:"Anura",n:{es:"Rana Ladrona Pigmea",en:"Pygmy Robber Frog",fr:"Grenouille voleuse pygmée"},sMin:20,sMax:28,elev:"0–1,500 m",iucn:"LC",act:"noc",tox:false,type:"litter",hab:{es:"Vegetación baja y hojarasca en bosque húmedo",en:"Low vegetation and leaf litter in moist forest",fr:"Végétation basse et litière en forêt humide"},diet:{es:"Insectos diminutos, ácaros",en:"Tiny insects, mites",fr:"Insectes minuscules, acariens"},desc:{es:"Pequeña rana nocturna entre la vegetación baja del bosque. Desarrollo directo.",en:"Small nocturnal frog in low forest vegetation. Direct development.",fr:"Petite grenouille nocturne dans la végétation basse de la forêt. Développement direct."},fact:{es:"'Ridens' significa 'riendo' en latín, por su canto que recuerda una risa suave.",en:"'Ridens' means 'laughing' in Latin, for its call resembling a soft laugh.",fr:"'Ridens' signifie 'riant' en latin, pour son chant rappelant un rire doux."},call:{es:"'Chirp' agudo y corto, repetido irregularmente.",en:"Short, sharp 'chirp', irregularly repeated.",fr:"'Chirp' aigu et court, répété irrégulièrement."},freq:"4.0–6.5 kHz",anat:{es:{e:"Relativamente grandes, pardo-dorado",p:"Granular, parda críptica",pa:"Cortas con discos digitales pequeños",c:"Diminuto, desarrollo directo"},en:{e:"Relatively large, brownish-golden",p:"Granular, cryptic brown",pa:"Short with small digital discs",c:"Tiny, direct development"},fr:{e:"Relativement grands, brun doré",p:"Granulaire, brun cryptique",pa:"Courtes avec petits disques digitaux",c:"Minuscule, développement direct"}},reg:["ca","zn","ps"],emoji:"🤏",img:"pristimantis-ridens.jpg"},
+{id:20,sci:"Scinax elaeochroa",fam:"Hylidae",ord:"Anura",n:{es:"Rana Hocico de Oliva",en:"Olive-snouted Treefrog",fr:"Rainette à museau olive"},sMin:25,sMax:35,elev:"0–1,200 m",iucn:"LC",act:"noc",tox:false,type:"tree",hab:{es:"Charcos, potreros inundados, cunetas",en:"Ponds, flooded pastures, ditches",fr:"Mares, pâturages inondés, fossés"},diet:{es:"Insectos voladores, mosquitos",en:"Flying insects, mosquitoes",fr:"Insectes volants, moustiques"},desc:{es:"Identificada correctamente como Scinax elaeochroa, la rana de hocico de oliva. En el registro original aparecía mal etiquetada como 'Pristimatis ridens'. Es la misma especie que la #9 (Rana Campanilla Común).",en:"Correctly identified as Scinax elaeochroa, the olive-snouted treefrog. In the original registry it was mislabeled as 'Pristimatis ridens'. It is the same species as #9.",fr:"Correctement identifiée comme Scinax elaeochroa, la rainette à museau olive. Dans le registre original, elle était mal étiquetée comme 'Pristimatis ridens'. C'est la même espèce que la #9."},fact:{es:"El registro original la duplicó con un nombre científico erróneo; su nombre correcto es Scinax elaeochroa.",en:"The original registry duplicated it under an incorrect scientific name; its correct name is Scinax elaeochroa.",fr:"Le registre original l'a dupliquée sous un nom scientifique incorrect ; son nom correct est Scinax elaeochroa."},call:{es:"Campanilleo agudo 'tink-tink-tink'. Coros metálicos junto a charcos.",en:"High-pitched 'tink-tink-tink' bell ringing. Metallic choruses near ponds.",fr:"Tintement aigu 'tink-tink-tink'. Chœurs métalliques près des mares."},freq:"4.0–6.0 kHz",anat:{es:{e:"Medianos, dorados",p:"Lisa, verde oliva",pa:"Medianas con ventosas",c:"Esbelto con hocico alargado"},en:{e:"Medium, golden",p:"Smooth, olive green",pa:"Medium with toe pads",c:"Slender with elongated snout"},fr:{e:"Moyens, dorés",p:"Lisse, vert olive",pa:"Moyennes avec ventouses",c:"Svelte avec museau allongé"}},reg:["ca","zn","ps"],emoji:"🫒",img:"rana-hocico-oliva.jpg",correction:true},
+{id:21,sci:"Craugastor fitzingeri",fam:"Craugastoridae",ord:"Anura",n:{es:"Rana de Lluvia Común",en:"Fitzinger's Rain Frog",fr:"Grenouille de pluie commune"},sMin:25,sMax:55,elev:"0–1,500 m",iucn:"LC",act:"noc",tox:false,type:"litter",hab:{es:"Suelo de bosque, hojarasca, cerca de arroyos",en:"Forest floor, leaf litter, near streams",fr:"Sol de forêt, litière, près des ruisseaux"},diet:{es:"Insectos, artrópodos terrestres",en:"Insects, terrestrial arthropods",fr:"Insectes, arthropodes terrestres"},desc:{es:"Rana de lluvia muy común. Variable en coloración. Desarrollo directo sin etapa larval.",en:"Very common rain frog. Variable coloration. Direct development without larval stage.",fr:"Grenouille de pluie très commune. Coloration variable. Développement direct sans stade larvaire."},fact:{es:"Nombrada en honor al zoólogo austríaco Leopold Fitzinger. El documento original contenía una errata.",en:"Named after Austrian zoologist Leopold Fitzinger. The original document contained a typo.",fr:"Nommée en l'honneur du zoologiste autrichien Leopold Fitzinger. Le document original contenait une erreur."},call:{es:"'Tuck-tuck' rítmico. Común en noches lluviosas.",en:"Rhythmic 'tuck-tuck'. Common on rainy nights.",fr:"'Tuck-tuck' rythmique. Commun les nuits pluvieuses."},freq:"2.5–4.5 kHz",anat:{es:{e:"Grandes, dorado-verdoso",p:"Lisa a granular, pliegues variables",pa:"Robustas, discos expandidos",c:"Mediano-grande, robusto"},en:{e:"Large, greenish-golden",p:"Smooth to granular, variable folds",pa:"Robust, expanded discs",c:"Medium-large, robust"},fr:{e:"Grands, doré-verdâtre",p:"Lisse à granulaire, plis variables",pa:"Robustes, disques élargis",c:"Moyen-grand, robuste"}},reg:["pc","ps","zn","ca"],emoji:"🌧️",img:"craugastor-fitzingeri.jpg",correction:true}
+];
+
+const COINS=[{n:"₡100",l:"100 Colones",d:29.5,c:"#c9a73c"},{n:"₡25",l:"25 Colones",d:25.5,c:"#999"},{n:"€1",l:"1 Euro",d:23.25,c:"#d4a574"}];
+// Accurate Costa Rica outline (GeoJSON [lon,lat]) + biogeographic regions
+const COUNTRY=[[-83.6745,10.9347],[-83.698,10.9399],[-83.6683,10.8888],[-83.6696,10.7981],[-83.7896,10.7706],[-83.8627,10.7176],[-83.9319,10.7077],[-84.021,10.7916],[-84.0703,10.7598],[-84.102,10.7744],[-84.1251,10.7644],[-84.137,10.787],[-84.2027,10.7818],[-84.2376,10.8156],[-84.2147,10.8407],[-84.2253,10.8734],[-84.3229,10.918],[-84.3506,10.9513],[-84.3417,10.9749],[-84.3587,10.9958],[-84.4198,10.9554],[-84.45,10.9621],[-84.4859,11.0009],[-84.5645,11.0331],[-84.5748,11.0511],[-84.6061,11.0384],[-84.6805,11.0844],[-84.9102,10.9434],[-85.3572,11.1262],[-85.4237,11.1288],[-85.5233,11.1681],[-85.5604,11.21],[-85.6099,11.2196],[-85.6929,11.0793],[-85.6701,11.0609],[-85.6703,11.038],[-85.7131,11.0265],[-85.7277,11.0491],[-85.755,11.0254],[-85.6892,10.977],[-85.7199,10.9554],[-85.7006,10.947],[-85.7117,10.926],[-85.7847,10.9395],[-85.7997,10.9318],[-85.7845,10.9154],[-85.7955,10.9081],[-85.8176,10.9211],[-85.8168,10.945],[-85.8843,10.9498],[-85.864,10.9413],[-85.8648,10.9262],[-85.9497,10.8896],[-85.916,10.8989],[-85.8668,10.8769],[-85.8541,10.8542],[-85.7975,10.8542],[-85.787,10.8428],[-85.8016,10.8254],[-85.7634,10.8029],[-85.7443,10.8187],[-85.68,10.8045],[-85.6583,10.766],[-85.6531,10.6759],[-85.6759,10.6614],[-85.6846,10.6443],[-85.6705,10.6421],[-85.6993,10.6107],[-85.6793,10.6114],[-85.6566,10.6425],[-85.626,10.6253],[-85.6517,10.5901],[-85.6762,10.5924],[-85.6823,10.5717],[-85.7,10.5728],[-85.6968,10.553],[-85.7531,10.53],[-85.7779,10.5437],[-85.7906,10.5176],[-85.8115,10.5167],[-85.7715,10.4543],[-85.7812,10.4376],[-85.7999,10.446],[-85.7993,10.4061],[-85.8264,10.4108],[-85.8471,10.3716],[-85.8752,10.3566],[-85.8399,10.3188],[-85.8515,10.2524],[-85.7888,10.0939],[-85.7433,10.0293],[-85.6806,9.9655],[-85.6865,9.9776],[-85.6687,9.9708],[-85.6811,9.9618],[-85.6619,9.9265],[-85.6684,9.9036],[-85.6413,9.9095],[-85.5693,9.8766],[-85.5201,9.8802],[-85.5093,9.8604],[-85.4891,9.8706],[-85.4676,9.8492],[-85.4515,9.8626],[-85.3963,9.8526],[-85.332,9.8224],[-85.3493,9.8405],[-85.3343,9.8159],[-85.2853,9.8078],[-85.2978,9.8047],[-85.2652,9.7755],[-85.2685,9.7886],[-85.2539,9.7898],[-85.2751,9.76],[-85.2169,9.7262],[-85.2293,9.7317],[-85.2013,9.6741],[-85.1124,9.559],[-85.0926,9.5705],[-85.0679,9.6541],[-84.995,9.7047],[-85.0205,9.7238],[-85.0106,9.7401],[-84.9816,9.7615],[-84.9919,9.7459],[-84.9551,9.7279],[-84.9541,9.757],[-84.9339,9.7574],[-84.9229,9.7925],[-84.9006,9.7981],[-84.9141,9.8132],[-84.8797,9.8123],[-84.8642,9.8286],[-84.9412,9.8321],[-84.9057,9.8533],[-84.9383,9.8798],[-84.9143,9.9033],[-84.9217,9.9254],[-84.9584,9.9417],[-85.0101,9.9394],[-85.0525,9.9759],[-85.1176,9.9747],[-85.1191,9.9918],[-85.1734,10.0158],[-85.1687,10.0341],[-85.1987,10.0272],[-85.1773,10.0339],[-85.1958,10.0368],[-85.1944,10.0832],[-85.2511,10.1042],[-85.2373,10.1125],[-85.248,10.2454],[-85.29,10.2694],[-85.2848,10.2916],[-85.3123,10.3204],[-85.355,10.3139],[-85.3593,10.3244],[-85.3138,10.3245],[-85.2835,10.2978],[-85.2835,10.2697],[-85.2384,10.2529],[-85.2166,10.1833],[-85.1429,10.1601],[-85.1194,10.176],[-85.0722,10.1727],[-85.0766,10.1355],[-85.0253,10.1319],[-84.9578,10.0699],[-84.9457,10.0785],[-84.9682,10.0649],[-84.946,10.063],[-84.9274,10.0382],[-84.9143,10.0444],[-84.9207,10.0357],[-84.884,10.0112],[-84.864,10.0129],[-84.8339,9.9866],[-84.805,9.9866],[-84.7991,10.0005],[-84.8044,9.9856],[-84.7854,9.9822],[-84.774,9.9956],[-84.7816,9.9849],[-84.7618,9.9839],[-84.8515,9.9766],[-84.751,9.9724],[-84.7355,9.9412],[-84.7025,9.9273],[-84.7275,9.9137],[-84.7309,9.8935],[-84.6278,9.7621],[-84.6751,9.6965],[-84.6801,9.6512],[-84.6572,9.6482],[-84.6637,9.6315],[-84.6279,9.6102],[-84.618,9.5814],[-84.5355,9.5186],[-84.4717,9.5305],[-84.2477,9.4747],[-84.2886,9.486],[-84.2551,9.4882],[-84.2309,9.4655],[-84.2461,9.494],[-84.226,9.4669],[-84.18,9.4545],[-84.2158,9.4578],[-84.1678,9.4385],[-84.1743,9.3941],[-83.9243,9.3003],[-83.8451,9.2365],[-83.8444,9.2206],[-83.7789,9.1929],[-83.7573,9.151],[-83.729,9.1468],[-83.6403,9.0517],[-83.6609,9.065],[-83.6311,9.0156],[-83.6234,8.9201],[-83.6089,8.9246],[-83.584,8.9071],[-83.5972,8.8988],[-83.5767,8.8944],[-83.5895,8.8902],[-83.5672,8.8876],[-83.6104,8.8817],[-83.5704,8.85],[-83.5971,8.8415],[-83.5847,8.8279],[-83.6249,8.8212],[-83.6515,8.794],[-83.6336,8.7799],[-83.6118,8.7979],[-83.6215,8.7746],[-83.6461,8.7678],[-83.6553,8.6968],[-83.6905,8.6957],[-83.7164,8.6758],[-83.7345,8.5988],[-83.6958,8.5803],[-83.5892,8.4592],[-83.5656,8.4404],[-83.4442,8.438],[-83.2991,8.3754],[-83.2774,8.3865],[-83.2844,8.5414],[-83.2907,8.5234],[-83.3264,8.5706],[-83.3737,8.5752],[-83.4265,8.6181],[-83.4347,8.6589],[-83.4681,8.6803],[-83.472,8.7013],[-83.4837,8.6971],[-83.4645,8.7264],[-83.4315,8.7134],[-83.3745,8.7483],[-83.3729,8.7352],[-83.3253,8.722],[-83.3288,8.6804],[-83.2948,8.6535],[-83.2548,8.6572],[-83.2371,8.6272],[-83.2246,8.6413],[-83.1821,8.6218],[-83.175,8.6444],[-83.1356,8.6005],[-83.1207,8.6024],[-83.1145,8.5923],[-83.1385,8.591],[-83.153,8.5705],[-83.0811,8.5413],[-83.1173,8.55],[-83.1023,8.5206],[-83.1168,8.5254],[-83.1171,8.5024],[-83.1513,8.5477],[-83.0919,8.4503],[-83.1454,8.3663],[-82.9711,8.2394],[-82.9016,8.1101],[-82.916,8.06],[-82.9002,8.0397],[-82.8858,8.1083],[-82.9082,8.1451],[-82.9117,8.1981],[-82.9358,8.2104],[-82.9279,8.2416],[-82.9418,8.2728],[-82.9749,8.2893],[-82.9896,8.2713],[-83.0517,8.3334],[-82.984,8.3725],[-82.9309,8.435],[-82.8684,8.4397],[-82.8396,8.4803],[-82.8397,8.5461],[-82.8222,8.5671],[-82.8381,8.6124],[-82.83,8.636],[-82.8674,8.6973],[-82.9163,8.7411],[-82.9192,8.7651],[-82.8854,8.7737],[-82.89,8.7921],[-82.8624,8.8155],[-82.8843,8.8293],[-82.8609,8.8527],[-82.7733,8.8784],[-82.7118,8.9246],[-82.7417,8.9855],[-82.8014,9.0036],[-82.8177,9.0299],[-82.8771,9.0601],[-82.8871,9.0879],[-82.9359,9.0785],[-82.9361,9.4731],[-82.8426,9.5014],[-82.8723,9.5246],[-82.8682,9.5537],[-82.8849,9.5651],[-82.8542,9.6216],[-82.7768,9.5848],[-82.7439,9.5889],[-82.7449,9.5685],[-82.7069,9.5355],[-82.696,9.5458],[-82.6883,9.5334],[-82.7025,9.5264],[-82.6712,9.4941],[-82.6548,9.5114],[-82.6391,9.4936],[-82.6058,9.5043],[-82.6,9.5595],[-82.5599,9.5386],[-82.552,9.5502],[-82.6173,9.6119],[-82.6218,9.6351],[-82.6991,9.6379],[-82.7823,9.6663],[-82.8143,9.7176],[-82.809,9.7449],[-82.8304,9.7342],[-82.8534,9.744],[-82.9456,9.8501],[-82.9341,9.844],[-83.0263,9.9665],[-83.0247,10.0004],[-83.0641,10.015],[-83.0782,9.9996],[-83.1039,10.0069],[-83.3724,10.3336],[-83.4979,10.5343],[-83.5578,10.6783],[-83.5863,10.8057],[-83.6368,10.9037],[-83.6745,10.9347]];
+const REGIONS={
+ pn:{es:"Pacífico Norte",en:"North Pacific",fr:"Pacifique Nord",slope:"pac",c:"#e9a23b",lab:[-85.45,10.5],poly:[[-86.6,11.6],[-85.55,11.30],[-85.25,10.80],[-84.92,10.58],[-84.58,10.46],[-85.0,9.95],[-85.55,9.62],[-86.6,9.62]]},
+ pc:{es:"Pacífico Central",en:"Central Pacific",fr:"Pacifique Central",slope:"pac",c:"#e8c14a",lab:[-84.78,9.62],poly:[[-86.2,9.62],[-85.55,9.62],[-85.0,9.95],[-84.58,10.46],[-84.22,10.18],[-83.92,9.92],[-83.64,9.60],[-83.95,9.25],[-84.3,8.9],[-86.2,8.9]]},
+ ps:{es:"Pacífico Sur",en:"South Pacific",fr:"Pacifique Sud",slope:"pac",c:"#d98c5f",lab:[-83.25,8.72],poly:[[-84.3,8.9],[-83.95,9.25],[-83.64,9.60],[-83.36,9.28],[-83.08,8.96],[-82.83,8.30],[-82.2,7.8],[-84.3,7.8]]},
+ zn:{es:"Zona Norte",en:"Northern Zone",fr:"Zone Nord",slope:"car",c:"#5fa86b",lab:[-84.55,10.78],poly:[[-85.55,11.30],[-85.25,10.80],[-84.92,10.58],[-84.58,10.46],[-84.22,10.18],[-84.1,10.6],[-83.95,11.05],[-84.5,11.5],[-85.3,11.55]]},
+ ca:{es:"Caribe",en:"Caribbean",fr:"Caraïbes",slope:"car",c:"#3d8f9d",lab:[-83.2,10.15],poly:[[-83.95,11.05],[-84.1,10.6],[-84.22,10.18],[-83.92,9.92],[-83.64,9.60],[-83.36,9.28],[-83.08,8.96],[-82.83,8.30],[-82.2,8.6],[-82.2,11.2],[-83.5,11.3]]}
+};
+const SLOPES={pac:{es:"Vertiente Pacífica",en:"Pacific Slope",fr:"Versant Pacifique"},car:{es:"Vertiente Caribe",en:"Caribbean Slope",fr:"Versant Caraïbe"}};
+const MAP={lonMin:-85.95,latMin:8.02,latMax:11.22,cos:Math.cos(9.62*Math.PI/180),scale:108,pad:10};
+function mproj(lon,lat){const x=MAP.pad+(lon-MAP.lonMin)*MAP.cos*MAP.scale;const y=MAP.pad+(MAP.latMax-lat)*MAP.scale;return [Math.round(x*10)/10,Math.round(y*10)/10];}
+function polyPath(poly){return 'M'+poly.map(p=>{const r=mproj(p[0],p[1]);return r[0]+','+r[1];}).join(' L')+' Z';}
+const MAP_VBW=Math.round(((-82.2-MAP.lonMin)*MAP.cos*MAP.scale+2*MAP.pad)),MAP_VBH=Math.round(((MAP.latMax-7.8)*MAP.scale+2*MAP.pad));
+
+// ======================================================
+// PHOTOS (local from PDF registry)
+// ======================================================
+function getPhotoUrl(sp) {
+  return sp.img ? `img/${sp.img}` : '';
+}
+
+// ======================================================
+// 3D MODELS (per-species .glb mounted in the 360°/3D tab)
+// ======================================================
+const MODELS = {
+  1: { f: "agalychnis-callidryas.glb", by: "Tripo AI · foto © dalien (CC BY-NC, iNaturalist)", lic: "uso educativo", src: "Generado con IA (Tripo)",
+       note: {es:"Modelo 3D generado por IA a partir de la foto real de la especie",
+              en:"AI-generated 3D model from the species' real photo",
+              fr:"Modèle 3D généré par IA à partir de la photo réelle de l'espèce"} },
+  8: { f: "hypopachus-variolosus.glb", by: "Tripo AI · foto © jaymurter (CC BY-NC-ND, iNaturalist)", lic: "uso educativo", src: "Generado con IA (Tripo)",
+       note: {es:"Modelo 3D generado por IA a partir de la foto real de la especie",
+              en:"AI-generated 3D model from the species' real photo",
+              fr:"Modèle 3D généré par IA à partir de la photo réelle de l'espèce"} },
+  5:  { f:"smilisca-phaeota.glb",      by:"Tripo AI · foto iNaturalist (CC)", lic:"uso educativo", src:"Generado con IA (Tripo)", tentative:true, note:{es:"Modelo 3D por IA · identificación de especie tentativa, por confirmar",en:"AI 3D model · tentative species ID, to confirm",fr:"Modèle 3D IA · identification tentative, à confirmer"} },
+  6:  { f:"smilisca-sordida.glb",      by:"Tripo AI · foto iNaturalist (CC)", lic:"uso educativo", src:"Generado con IA (Tripo)", tentative:true, note:{es:"Modelo 3D por IA · identificación de especie tentativa, por confirmar",en:"AI 3D model · tentative species ID, to confirm",fr:"Modèle 3D IA · identification tentative, à confirmer"} },
+  11: { f:"tlalocohyla-loquax.glb",    by:"Tripo AI · foto iNaturalist (CC)", lic:"uso educativo", src:"Generado con IA (Tripo)", tentative:true, note:{es:"Modelo 3D por IA · identificación de especie tentativa, por confirmar",en:"AI 3D model · tentative species ID, to confirm",fr:"Modèle 3D IA · identification tentative, à confirmer"} },
+  14: { f:"leptodactylus-savagei.glb", by:"Tripo AI · foto iNaturalist (CC)", lic:"uso educativo", src:"Generado con IA (Tripo)", tentative:true, note:{es:"Modelo 3D por IA · identificación de especie tentativa, por confirmar",en:"AI 3D model · tentative species ID, to confirm",fr:"Modèle 3D IA · identification tentative, à confirmer"} }
+};
+let mvLoaded = false;
+function loadModelViewer(){
+  if (mvLoaded) return Promise.resolve();
+  return new Promise((res, rej) => {
+    const sc = document.createElement('script');
+    sc.type = 'module'; sc.src = 'lib/model-viewer.min.js';
+    sc.onload = () => { mvLoaded = true; res(); };
+    sc.onerror = rej;
+    document.head.appendChild(sc);
+  });
+}
+// Build the photos array for a species (PDF hero + iNaturalist gallery)
+function photosOf(s){
+  const photos = [];
+  const hero = getPhotoUrl(s);
+  if (hero) photos.push({ url: hero, attr: '📷 ' + t('photoRegistry'), link: '' });
+  (GALLERY[s.id] || []).forEach(g => photos.push({ url: 'img/' + g.f, attr: `© ${g.by} · ${g.lic} · ${g.src}`, link: g.url }));
+  return photos;
+}
+function photoBodyHTML(s){
+  const photos = photosOf(s);
+  window._photos = photos; window._photoIdx = 0;
+  if (!photos.length) return `<div class="det-photo-main"><div class="ph">${s.emoji}</div></div>`;
+  const credit0 = photos[0].link ? `${photos[0].attr} · <a href="${photos[0].link}" target="_blank" rel="noopener">${t('viewObs')}</a>` : photos[0].attr;
+  return `<div class="det-photo-main">
+      <img id="main-img" src="${photos[0].url}" alt="${s.sci}" onclick="openLB(this.src)">
+      ${photos.length>1?`<span class="photo-nav prev" onclick="navPhoto(-1)">◀</span><span class="photo-nav next" onclick="navPhoto(1)">▶</span><span class="photo-count">1 / ${photos.length}</span>`:''}
+    </div>
+    ${photos.length>1?`<div class="det-photo-thumbs">${photos.map((p,i)=>`<img src="${p.url}" class="${i===0?'active':''}" onclick="setPhoto(${i})" alt="" loading="lazy">`).join('')}</div>`:''}
+    <div class="det-photo-credit" id="det-photo-credit">${credit0}</div>`;
+}
+function model3DHTML(s){
+  const m = MODELS[s.id];
+  const note = m.note ? (m.note[lang] || m.note.es) : '';
+  return `<div class="det-3d-wrap">
+      <model-viewer src="models/${m.f}" alt="${s.n[lang]}" camera-controls auto-rotate rotation-per-second="18deg"
+        touch-action="pan-y" shadow-intensity="1" exposure="1.1" environment-image="neutral"
+        ${m.anim?`animation-name="${m.anim}" autoplay`:''}
+        ar ar-modes="webxr scene-viewer quick-look" loading="eager" reveal="auto"></model-viewer>
+      <span class="det-3d-hint">🖱️ ${t('drag3d')}</span>
+    </div>
+    <div class="det-photo-credit">🧊 ${note?note+' · ':''}© ${m.by} · ${m.lic} · ${m.src}</div>`;
+}
+window.vtab = async (mode) => {
+  const s = SP[curIdx]; if (!s) return;
+  const tabs = document.querySelectorAll('#det-photo .vtab');
+  const body = document.getElementById('det-viewer-body');
+  if (mode === '3d') {
+    if (!MODELS[s.id]) return;
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.m === '3d'));
+    body.innerHTML = `<div class="det-3d-loading">⏳ 3D…</div>`;
+    try { await loadModelViewer(); body.innerHTML = model3DHTML(s); }
+    catch(e){ body.innerHTML = `<p class="snd-none">3D no disponible</p>`; }
+  } else {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.m === 'photos'));
+    body.innerHTML = photoBodyHTML(s);
+  }
+};
+
+// ======================================================
+// UI
+// ======================================================
+let view='grid', filter='all', curIdx=-1, coinIdx=0;
+
+function filtered(q='') {
+  return SP.filter(s => {
+    const m = !q || s.n[lang].toLowerCase().includes(q) || s.sci.toLowerCase().includes(q) || s.fam.toLowerCase().includes(q);
+    let f = true;
+    if (filter==='rana') f = !s.n.es.toLowerCase().startsWith('sapo') && s.type!=='toad';
+    else if (filter==='sapo') f = s.n.es.toLowerCase().startsWith('sapo') || s.type==='toad';
+    else if (filter==='noc') f = s.act==='noc';
+    else if (filter==='diu') f = s.act==='diu';
+    else if (filter==='tox') f = s.tox;
+    return m && f;
+  });
+}
+
+function renderGrid(q='') {
+  const f = filtered(q);
+  document.getElementById('sp-count').textContent = f.length;
+  document.getElementById('grid-view').innerHTML = f.map(s => {
+    const src = getPhotoUrl(s);
+    return `
+    <div class="card" data-id="${s.id}" onclick="D(${s.id})">
+      <div class="card-img">
+        ${src ? `<img src="${src}" alt="${s.sci}">` : `<div class="placeholder">${s.emoji}</div>`}
+        <span class="card-num">#${String(s.id).padStart(3,'0')}</span>
+        <span class="card-iucn iucn-${s.iucn.toLowerCase()}">${s.iucn}</span>
+        <button class="card-sound${hasAudio(s.id)?'':' noaudio'}" onclick="event.stopPropagation();QS(${s.id},this)" title="${hasAudio(s.id)?t('playCall'):t('noAudio')}">${hasAudio(s.id)?'🔊':'🔇'}</button>
+      </div>
+      <div class="card-body">
+        <div class="card-common">${s.n[lang]}</div>
+        <div class="card-sci">${s.sci}</div>
+        <div class="card-meta"><span>📏 ${s.sMin}–${s.sMax} mm</span><span>⛰️ ${s.elev}</span></div>
+        <div class="card-family">${s.fam}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderList(q='') {
+  const f = filtered(q);
+  document.getElementById('list-rows').innerHTML = f.map(s => {
+    const src = getPhotoUrl(s);
+    return `<div class="list-row" onclick="D(${s.id})">
+      <span class="list-num">#${String(s.id).padStart(3,'0')}</span>
+      ${src ? `<img class="list-photo" src="${src}" alt="${s.sci}">` : `<span class="list-photo" style="display:flex;align-items:center;justify-content:center;font-size:22px">${s.emoji}</span>`}
+      <div class="list-names"><div class="list-common">${s.n[lang]}</div><div class="list-sci">${s.sci}</div></div>
+      <button class="list-snd${hasAudio(s.id)?'':' noaudio'}" onclick="event.stopPropagation();QS(${s.id},this)" title="${hasAudio(s.id)?t('playCall'):t('noAudio')}">${hasAudio(s.id)?'🔊':'🔇'}</button>
+      <span class="list-size">${s.sMin}–${s.sMax} mm</span>
+    </div>`;
+  }).join('');
+}
+
+function switchView(v) {
+  view = v;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view===v));
+  document.getElementById('grid-view').style.display = v==='grid' ? 'grid' : 'none';
+  document.getElementById('list-view').style.display = v==='list' ? 'block' : 'none';
+  const q = document.getElementById('search').value.toLowerCase();
+  if (v==='list') renderList(q); else renderGrid(q);
+}
+
+// ======================================================
+// DETAIL
+// ======================================================
+window.D = function(id) {
+  const s = SP.find(x => x.id===id);
+  if (!s) return;
+  curIdx = SP.indexOf(s);
+  document.getElementById('det-num').textContent = `#${String(s.id).padStart(3,'0')}`;
+  document.getElementById('det-name').textContent = s.n[lang];
+
+  // Photo gallery (PDF hero + iNaturalist multi-angle) + 3D viewer tab
+  const photoPanel = document.getElementById('det-photo');
+  const has3d = !!MODELS[s.id];
+  photoPanel.innerHTML = `
+    <div class="det-viewer-tabs">
+      <button class="vtab active" data-m="photos" onclick="vtab('photos')">🖼️ ${t('photos')} <span class="vtab-n">${photosOf(s).length}</span></button>
+      <button class="vtab vtab-3d" data-m="3d" ${has3d?`onclick="vtab('3d')"`:`disabled title="${t('soon3d')}"`}>🧊 360° / 3D${has3d?` <span class="vtab-n vtab-new">NEW</span>`:''}</button>
+    </div>
+    <div id="det-viewer-body">${photoBodyHTML(s)}</div>`;
+
+  // Bio
+  document.getElementById('det-bio').innerHTML = `
+    <div class="bio-card"><h3>${t('bioData')}</h3>
+      <div class="bio-row"><span class="bio-label">${t('sciName')}</span><span class="bio-val sci">${s.sci}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('engName')}</span><span class="bio-val">${s.n.en}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('family')}</span><span class="bio-val">${s.fam}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('order')}</span><span class="bio-val">${s.ord}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('sizeSVL')}</span><span class="bio-val">${s.sMin}–${s.sMax} mm</span></div>
+      <div class="bio-row"><span class="bio-label">${t('elevation')}</span><span class="bio-val">${s.elev}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('habitat')}</span><span class="bio-val">${s.hab[lang]}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('activity')}</span><span class="bio-val">${s.act==='noc'?t('nocturnalTag'):t('diurnalTag')}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('diet')}</span><span class="bio-val">${s.diet[lang]}</span></div>
+      <div class="bio-row"><span class="bio-label">${t('iucnStatus')}</span><span class="bio-val"><span class="card-iucn iucn-${s.iucn.toLowerCase()}" style="font-size:11px">${s.iucn==='LC'?t('leastConcern'):t('dataDeficient')}</span></span></div>
+      <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap">
+        <span class="tag ${s.act==='noc'?'tag-noc':'tag-diu'}">${s.act==='noc'?'🌙 '+t('nocturnalTag'):'☀️ '+t('diurnalTag')}</span>
+        ${s.type==='tree'||s.type==='glass'?`<span class="tag tag-arb">🌳 ${t('arboreal')}</span>`:''}
+        ${['litter','ground','toad','narrow','true'].includes(s.type)?`<span class="tag tag-ter">🌍 ${t('terrestrial')}</span>`:''}
+        ${s.tox?`<span class="tag tag-tox">☠️ ${t('toxicTag')}</span>`:''}
+      </div>
+    </div>
+    <div class="bio-card"><h3>${t('description')}</h3>
+      <p class="bio-desc">${s.desc[lang]}</p>
+      <p class="bio-fact">💡 ${s.fact[lang]}</p>
+    </div>`;
+
+  // Sound — local players (Xeno-Canto primary + iNaturalist complementary)
+  const recs = AUDIO[s.id] || [];
+  let sndHtml = `<h3>🔊 ${t('sound')}</h3>
+    <div class="snd-desc"><strong>${t('callType')}:</strong> ${s.call[lang]}<br><strong>${t('frequency')}:</strong> ${s.freq}</div>`;
+  if(recs.length){
+    sndHtml += `<div class="snd-list">` + recs.map(r => {
+      const srcClass = r.src==='Xeno-Canto' ? 'xc' : 'inat';
+      const cred = `${r.by?('© '+r.by+' · '):''}${r.lic||''}${r.url?` · <a href="${r.url}" target="_blank" rel="noopener">${r.xc?('XC'+r.xc):'fuente'}</a>`:''}`;
+      return `<div class="snd-item">
+        <div class="snd-item-head">
+          <span class="snd-src snd-src-${srcClass}">${r.src}</span>
+          ${r.type?`<span class="snd-type">${r.type}</span>`:''}
+          ${r.loc?`<span class="snd-loc">📍 ${shortLoc(r.loc)}</span>`:''}
+        </div>
+        <audio controls preload="none" src="audio/${r.f}"></audio>
+        <div class="snd-cred">${cred}</div>
+      </div>`;
+    }).join('') + `</div>`;
+  } else {
+    sndHtml += `<p class="snd-none">🔇 ${t('noAudio')}</p>`;
+  }
+  document.getElementById('det-snd').innerHTML = sndHtml;
+
+  // Anatomy
+  const a = s.anat[lang];
+  document.getElementById('det-anat').innerHTML = `<h3>${t('anatomy')}</h3>
+    <div class="anat-grid">
+      <div class="anat-item"><h4>👁️ ${t('eyes')}</h4><p>${a.e}</p></div>
+      <div class="anat-item"><h4>🧬 ${t('skin')}</h4><p>${a.p}</p></div>
+      <div class="anat-item"><h4>🦶 ${t('legs')}</h4><p>${a.pa}</p></div>
+      <div class="anat-item"><h4>🫀 ${t('bodyA')}</h4><p>${a.c}</p></div>
+    </div>`;
+
+  // Size
+  renderSize(s);
+
+  // Map
+  renderMap(s);
+
+  document.getElementById('detail').classList.add('open');
+  document.getElementById('detail').scrollTop = 0;
+};
+
+window.closeD = () => document.getElementById('detail').classList.remove('open');
+window.navSp = d => { let i = curIdx+d; if(i<0) i=SP.length-1; if(i>=SP.length) i=0; D(SP[i].id); };
+
+// Photo navigation
+window.setPhoto = i => { const p=window._photos; if(!p||!p[i]) return; window._photoIdx=i; document.getElementById('main-img').src=p[i].url; document.querySelectorAll('.det-photo-thumbs img').forEach((t,j)=>t.classList.toggle('active',j===i)); const cr=document.getElementById('det-photo-credit'); if(cr) cr.innerHTML = p[i].link?`${p[i].attr} · <a href="${p[i].link}" target="_blank" rel="noopener">${t('viewObs')}</a>`:p[i].attr; const pc=document.querySelector('.photo-count'); if(pc) pc.textContent=`${i+1} / ${p.length}`; };
+window.navPhoto = d => { const p=window._photos; if(!p) return; let i=window._photoIdx+d; if(i<0)i=p.length-1; if(i>=p.length)i=0; setPhoto(i); };
+
+// Lightbox
+window.openLB = src => { document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('open'); };
+document.getElementById('lightbox').addEventListener('click', () => document.getElementById('lightbox').classList.remove('open'));
+
+// Size comparison
+function renderSize(s) {
+  const avg = (s.sMin+s.sMax)/2, avgIn = (avg/25.4).toFixed(1), px=2.2;
+  const c = COINS[coinIdx];
+  const fw = Math.max(Math.min(avg*px,170),34), fh = fw*0.66;
+  const cd = Math.max(c.d*px,18);
+  const src = getPhotoUrl(s);
+  const frogVisual = src
+    ? `<div class="size-frog-photo" style="width:${fw}px;height:${fh}px"><img src="${src}" alt="${s.sci}"></div>`
+    : `<div class="size-circle size-frog" style="width:${fw}px;height:${fh}px;font-size:${Math.min(fw*.4,50)}px">${s.emoji}</div>`;
+  document.getElementById('det-size').innerHTML = `<h3>📏 ${t('sizeComp')}</h3>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:8px">${t('avgSize')}: <b>${avg.toFixed(0)} mm</b> (${avgIn} in) · ${t('range')}: ${s.sMin}–${s.sMax} mm</p>
+    <div class="size-display">
+      <div class="size-item">${frogVisual}<span class="size-label">${s.n[lang]}<br><b>${avg.toFixed(0)} mm</b></span></div>
+      <div style="font-size:16px;color:var(--text3);align-self:center;padding-bottom:18px">vs</div>
+      <div class="size-item"><div class="size-circle size-coin" style="width:${cd}px;height:${cd}px;font-size:${Math.max(cd*.2,8)}px">${c.n}</div><span class="size-label">${c.l}<br><b>${c.d} mm</b></span></div>
+    </div>
+    <div class="size-btns">${COINS.map((c,i)=>`<button class="size-btn ${i===coinIdx?'active':''}" onclick="window.setCoin(${i})">${c.n} (${c.d}mm)</button>`).join('')}</div>`;
+}
+window.setCoin = i => { coinIdx=i; if(curIdx>=0) renderSize(SP[curIdx]); };
+
+// Map — accurate Costa Rica outline divided into biogeographic regions
+function renderMap(s) {
+  const countryD = polyPath(COUNTRY);
+  // Region fills (clipped to country outline)
+  const regionPaths = Object.entries(REGIONS).map(([k,v]) => {
+    const on = s.reg.includes(k);
+    return `<path d="${polyPath(v.poly)}" fill="${on?v.c:'#e6e2d8'}" fill-opacity="${on?.92:.55}" clip-path="url(#crclip)"><title>${v[lang]}</title></path>`;
+  }).join('');
+  // Region labels at centroids
+  const labels = Object.entries(REGIONS).map(([k,v]) => {
+    const on = s.reg.includes(k);
+    const [lx,ly] = mproj(v.lab[0], v.lab[1]);
+    return `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="${on?'10.5':'9'}" font-weight="${on?'700':'500'}" fill="${on?'#fff':'#9a958a'}" font-family="Source Sans 3,sans-serif" style="paint-order:stroke;stroke:${on?'rgba(0,0,0,.35)':'rgba(255,255,255,.6)'};stroke-width:${on?'2.5':'2'}px;stroke-linejoin:round">${v[lang]}</text>`;
+  }).join('');
+  // Group regions by slope (vertiente) for the legend
+  const bySlope = sl => Object.entries(REGIONS).filter(([k,v])=>v.slope===sl);
+  const legendItem = ([k,v]) => { const on=s.reg.includes(k);
+    return `<div class="map-prov"><span class="map-dot" style="background:${on?v.c:'var(--border)'}"></span><span style="${on?'font-weight:600;color:var(--text)':'color:var(--text3)'}">${v[lang]}</span>${on?' <span style="color:var(--green)">✓</span>':''}</div>`; };
+  document.getElementById('det-map').innerHTML = `<h3>🗺️ ${t('distribution')}</h3>
+    <div class="map-wrap">
+      <div class="map-svg"><svg viewBox="0 0 ${MAP_VBW} ${MAP_VBH}" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="crclip"><path d="${countryD}"/></clipPath></defs>
+        <rect x="0" y="0" width="${MAP_VBW}" height="${MAP_VBH}" fill="#dceff4" rx="6"/>
+        <path d="${countryD}" fill="#f3f0e8"/>
+        ${regionPaths}
+        <path d="${countryD}" fill="none" stroke="#2d3a35" stroke-width="1.6" stroke-linejoin="round"/>
+        ${labels}
+      </svg></div>
+      <div class="map-info">
+        <div style="margin-bottom:8px"><h4 style="font-size:11px;color:var(--green);margin-bottom:4px;letter-spacing:.5px">⛰️ ${SLOPES.pac[lang]}</h4>${bySlope('pac').map(legendItem).join('')}</div>
+        <div><h4 style="font-size:11px;color:var(--green);margin-bottom:4px;letter-spacing:.5px">🌊 ${SLOPES.car[lang]}</h4>${bySlope('car').map(legendItem).join('')}</div>
+        <div class="map-elev"><strong>${t('elevRange')}:</strong> ${s.elev}</div>
+      </div>
+    </div>`;
+}
+
+// ======================================================
+// LOCAL AUDIO (Xeno-Canto + iNaturalist, hosted locally)
+// ======================================================
+let AUDIO = {}, GALLERY = {};
+const audioEl = new Audio();
+let qsBtn = null, qsFile = null;
+async function loadAudioManifest(){ try { const r = await fetch('audio/manifest.json'); AUDIO = await r.json(); } catch(e){ AUDIO = {}; } }
+async function loadGalleryManifest(){ try { const r = await fetch('img/gallery_manifest.json'); GALLERY = await r.json(); } catch(e){ GALLERY = {}; } }
+function hasAudio(id){ const a = AUDIO[id]; return !!(a && a.length); }
+function shortLoc(loc){ if(!loc) return ''; const parts = loc.split(',').map(s=>s.trim()).filter(Boolean); return parts.slice(-2).join(', '); }
+function clearPlaying(){ document.querySelectorAll('.card-sound.playing,.list-snd.playing').forEach(b=>b.classList.remove('playing')); }
+// Inline quick-play from grid cards / list rows (plays the primary recording)
+window.QS = (id, btn) => {
+  const recs = AUDIO[id];
+  if(!recs || !recs.length) return;
+  const file = 'audio/' + recs[0].f;
+  if(qsFile === file && !audioEl.paused){ audioEl.pause(); clearPlaying(); qsFile=null; return; }
+  clearPlaying();
+  // pause any detail players
+  document.querySelectorAll('#det-snd audio').forEach(a=>a.pause());
+  audioEl.src = file; qsFile = file; qsBtn = btn;
+  audioEl.play().then(()=>{ if(btn) btn.classList.add('playing'); }).catch(()=>{});
+};
+audioEl.addEventListener('ended', () => { clearPlaying(); qsFile=null; });
+audioEl.addEventListener('pause', () => { if(qsBtn) qsBtn.classList.remove('playing'); });
+// Only one audio element plays at a time (detail players + inline)
+document.addEventListener('play', e => {
+  if(e.target.tagName==='AUDIO'){
+    document.querySelectorAll('audio').forEach(a => { if(a!==e.target) a.pause(); });
+    if(audioEl!==e.target){ audioEl.pause(); clearPlaying(); qsFile=null; }
+  }
+}, true);
+
+// ======================================================
+// LANGUAGE
+// ======================================================
+function applyLang() {
+  document.querySelectorAll('[data-t]').forEach(el => { const k=el.dataset.t; if(UI[lang][k]) el.textContent=UI[lang][k]; });
+  document.querySelectorAll('[data-t-ph]').forEach(el => { const k=el.dataset.tPh; if(UI[lang][k]) el.placeholder=UI[lang][k]; });
+  document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x.dataset.lang===lang));
+  document.title = UI[lang].title + ' — ' + UI[lang].subtitle;
+  const q = document.getElementById('search').value.toLowerCase();
+  if(view==='grid') renderGrid(q); else renderList(q);
+  // Re-render open detail in the new language (preserve scroll)
+  const det = document.getElementById('detail');
+  if(det.classList.contains('open') && curIdx>=0){ const sc=det.scrollTop; D(SP[curIdx].id); det.scrollTop=sc; }
+}
+
+// ======================================================
+// EVENTS
+// ======================================================
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+  lang = b.dataset.lang;
+  applyLang();
+}));
+document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => switchView(b.dataset.view)));
+document.querySelectorAll('.pill').forEach(p => p.addEventListener('click', () => {
+  filter = p.dataset.f;
+  document.querySelectorAll('.pill').forEach(x => x.classList.toggle('active', x===p));
+  const q = document.getElementById('search').value.toLowerCase();
+  if(view==='grid') renderGrid(q); else renderList(q);
+}));
+document.getElementById('search').addEventListener('input', e => { const q=e.target.value.toLowerCase(); if(view==='grid') renderGrid(q); else renderList(q); });
+document.getElementById('det-close').addEventListener('click', closeD);
+document.getElementById('det-prev').addEventListener('click', () => navSp(-1));
+document.getElementById('det-next').addEventListener('click', () => navSp(1));
+document.addEventListener('keydown', e => {
+  if(document.getElementById('detail').classList.contains('open')){
+    if(e.key==='Escape') closeD();
+    else if(e.key==='ArrowLeft') navSp(-1);
+    else if(e.key==='ArrowRight') navSp(1);
+  }
+  if(document.getElementById('lightbox').classList.contains('open') && e.key==='Escape') document.getElementById('lightbox').classList.remove('open');
+});
+
+// ======================================================
+// INIT
+// ======================================================
+await Promise.all([loadAudioManifest(), loadGalleryManifest()]);
+applyLang();
+</script>
+</body>
+</html>

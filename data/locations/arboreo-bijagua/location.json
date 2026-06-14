@@ -1,0 +1,26 @@
+{
+  "id": "arboreo-bijagua",
+  "name": "Arbóreo",
+  "area": "Bijagua, Alajuela",
+  "region": "zona-norte",
+  "coords": [10.74, -85.05],
+  "description": {
+    "es": "Reserva en Bijagua, vertiente caribe / zona norte de Costa Rica.",
+    "en": "Reserve in Bijagua, Caribbean slope / northern zone of Costa Rica.",
+    "fr": "Réserve à Bijagua, versant caraïbe / zone nord du Costa Rica."
+  },
+  "groups": [
+    {
+      "id": "anfibios",
+      "name": { "es": "Anfibios", "en": "Amphibians", "fr": "Amphibiens" },
+      "icon": "🐸",
+      "speciesCount": 21,
+      "status": "activo"
+    },
+    { "id": "reptiles",  "name": { "es": "Reptiles", "en": "Reptiles", "fr": "Reptiles" },  "icon": "🦎", "speciesCount": 0, "status": "pendiente" },
+    { "id": "aves",      "name": { "es": "Aves", "en": "Birds", "fr": "Oiseaux" },          "icon": "🐦", "speciesCount": 0, "status": "pendiente" },
+    { "id": "mamiferos", "name": { "es": "Mamíferos", "en": "Mammals", "fr": "Mammifères" }, "icon": "🦌", "speciesCount": 0, "status": "pendiente" },
+    { "id": "insectos",  "name": { "es": "Insectos", "en": "Insects", "fr": "Insectes" },    "icon": "🦋", "speciesCount": 0, "status": "pendiente" },
+    { "id": "hongos",    "name": { "es": "Hongos", "en": "Fungi", "fr": "Champignons" },      "icon": "🍄", "speciesCount": 0, "status": "pendiente" }
+  ]
+}

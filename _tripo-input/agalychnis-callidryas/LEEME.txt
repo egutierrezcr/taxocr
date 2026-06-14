@@ -1,0 +1,35 @@
+IMÁGENES DE REFERENCIA PARA MODELO 3D — Rana de Ojos Rojos (Agalychnis callidryas)
+================================================================================
+
+QUÉ HACER EN TRIPO (studio.tripo3d.ai)
+--------------------------------------
+1. Entra a "Generar modelo" → pestaña "Modelo" (imagen a 3D).
+2. Sube UNA imagen (empieza por la RECOMENDADA).
+3. Modo: **MODELO HD**  (no "Malla Smart"). Más realismo y textura.
+   - Deja "Textura y topología" en sus valores por defecto.
+   - Los toggles "Solo para suscriptores" (Ultra, 8K, Partes) puedes dejarlos apagados.
+4. Clic en "Generar modelo" (~40 créditos).
+5. Cuando termine, EXPORTA / DESCARGA en formato **GLB**.
+   (Si la descarga sale limitada o con marca de agua en el plan gratis, avísame.)
+6. Pásame el archivo .glb o ponlo en la carpeta del sitio:
+       models/agalychnis-callidryas.glb
+   y yo lo monto en el visor 360°/3D.
+
+CUÁL IMAGEN USAR
+----------------
+- 01-lateral-oscura-RECOMENDADA.jpg  → EMPIEZA AQUÍ.
+    Perfil lateral con fondo oscuro = Tripo recorta fácil y capta todo el cuerpo.
+- 02-lateral-flor.jpg                → perfil muy vívido (ojo rojo, flancos azul/amarillo).
+- 03-frontal.jpg / 04-frontal-clara.jpg → vistas frontales (ojos saltones).
+
+Consejo: genera con 01 primero. Si las patas o los ojos salen raros, prueba 03 o 04
+(frontales) o 02. Cada imagen da un resultado distinto; elegimos el mejor.
+
+CRÉDITOS DE LAS FOTOS (Creative Commons, vía iNaturalist — usar con atribución)
+------------------------------------------------------------------------------
+- 01  © dalien            · CC BY-NC    · inaturalist.org/observations/37417998
+- 02  © paulcools         · CC BY-NC    · inaturalist.org/observations/10699223
+- 03  © tom-kirschey      · CC BY-NC    · inaturalist.org/observations/68797345
+- 04  © threeagoutdoors   · CC BY       · inaturalist.org/observations/167258822
+
+Uso educativo / no comercial. Mantener la atribución del fotógrafo.

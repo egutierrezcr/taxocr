@@ -1,0 +1,540 @@
+{
+ "1": [
+  {
+   "f": "agalychnis-callidryas-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893968",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Golfito (near  Gamba), Golfito, Provincia de Puntarenas",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893968"
+  },
+  {
+   "f": "agalychnis-callidryas.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Heredia",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1601938"
+  }
+ ],
+ "2": [
+  {
+   "f": "teratohyla-pulverata-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "951777",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Puerto Viejo (near  Puerto Viejo de Sarapiqui), Sarapiqui, Heredia Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/951777"
+  },
+  {
+   "f": "teratohyla-pulverata.m4a",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Heredia",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/578803"
+  }
+ ],
+ "3": [
+  {
+   "f": "dendropsophus-microcephalus-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "890493",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Los Chiles, Los Chiles, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/890493"
+  },
+  {
+   "f": "dendropsophus-microcephalus.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "geoffrey_monchaux-lefevre",
+   "type": "",
+   "loc": "Puntarenas",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1507377"
+  }
+ ],
+ "4": [
+  {
+   "f": "smilisca-baudinii-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893985",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Caño Negro, Los Chiles, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893985"
+  },
+  {
+   "f": "smilisca-baudinii-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1101611",
+   "by": "Albert Lastukhin",
+   "type": "advertisement call",
+   "loc": "Provincia de Guanacaste",
+   "lic": "CC BY-NC-ND",
+   "cc": "by-nc-nd",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1101611"
+  },
+  {
+   "f": "smilisca-baudinii.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "calhoon_ledebur",
+   "type": "",
+   "loc": "Guanacaste",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/485363"
+  }
+ ],
+ "5": [
+  {
+   "f": "smilisca-phaeota-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893991",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "La Palmera (near  San Rafaeillo), San Carlos, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893991"
+  },
+  {
+   "f": "smilisca-phaeota.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Alajuela",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/956047"
+  }
+ ],
+ "6": [
+  {
+   "f": "smilisca-sordida.m4a",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Amaël Borzée",
+   "type": "",
+   "loc": "San José",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1779335"
+  }
+ ],
+ "7": [
+  {
+   "f": "dendropsophus-ebraccatus-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893967",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Golfito (near  Gamba), Golfito, Provincia de Puntarenas",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893967"
+  },
+  {
+   "f": "dendropsophus-ebraccatus.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Limón",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1602621"
+  }
+ ],
+ "8": [
+  {
+   "f": "hypopachus-variolosus-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893995",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Xmejía, Hopelchén Municipality, Campeche",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "",
+   "url": "https://xeno-canto.org/893995"
+  },
+  {
+   "f": "hypopachus-variolosus-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "890496",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Concepcion, Duval County, Texas",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "",
+   "url": "https://xeno-canto.org/890496"
+  },
+  {
+   "f": "hypopachus-variolosus.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Texas",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "US",
+   "url": "https://www.inaturalist.org/sounds/1971589"
+  }
+ ],
+ "9": [
+  {
+   "f": "scinax-elaeochroa-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893986",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Caño Negro, Los Chiles, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893986"
+  },
+  {
+   "f": "scinax-elaeochroa-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1029812",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Siquirres, Siquirres, Limón",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1029812"
+  },
+  {
+   "f": "scinax-elaeochroa.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Limón",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1602576"
+  }
+ ],
+ "10": [
+  {
+   "f": "oophaga-pumilio-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893976",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Sarapiqui Conservation Learning Center (near  Puerto Viejo de Sarapiqui), Sarapiqui, Heredia Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893976"
+  },
+  {
+   "f": "oophaga-pumilio-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1045971",
+   "by": "Beatrix Saadi-Varchmin",
+   "type": "advertisement call",
+   "loc": "Puerto Viejo (near  Puerto Viejo de Sarapiqui), Sarapiqui, Heredia Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1045971"
+  },
+  {
+   "f": "oophaga-pumilio.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "David Tempelman",
+   "type": "",
+   "loc": "Limón",
+   "lic": "CC BY-NC-ND",
+   "cc": "",
+   "country": "CR",
+   "url": null
+  }
+ ],
+ "11": [
+  {
+   "f": "tlalocohyla-loquax-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1029803",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Siquirres, Siquirres, Limón",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1029803"
+  },
+  {
+   "f": "tlalocohyla-loquax-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1069742",
+   "by": "Linzy L.",
+   "type": "",
+   "loc": "La Fortuna (near  El Castillo), San Ramón, Alajuela Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1069742"
+  },
+  {
+   "f": "tlalocohyla-loquax.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Limón",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1607461"
+  }
+ ],
+ "14": [
+  {
+   "f": "leptodactylus-savagei-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "890477",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Venecia (near  Buenos Aires), San Carlos, Alajuela Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/890477"
+  },
+  {
+   "f": "leptodactylus-savagei-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1085146",
+   "by": "Paul Driver",
+   "type": "advertisement call",
+   "loc": "Dos Brazos, Puntarenas Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1085146"
+  },
+  {
+   "f": "leptodactylus-savagei.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Paul Driver",
+   "type": "",
+   "loc": "Dos Brazos, Puntarenas Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "",
+   "country": "CR",
+   "url": null
+  }
+ ],
+ "15": [
+  {
+   "f": "rhinella-marina-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893640",
+   "by": "Alain Malengreau",
+   "type": "advertisement call",
+   "loc": "Saül, Arrondissement de St.-Laurent-du-Maroni",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "",
+   "url": "https://xeno-canto.org/893640"
+  },
+  {
+   "f": "rhinella-marina-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893523",
+   "by": "Simon Elliott",
+   "type": "advertisement call",
+   "loc": "Dauphin",
+   "lic": "CC BY-NC-ND",
+   "cc": "by-nc-nd",
+   "country": "",
+   "url": "https://xeno-canto.org/893523"
+  },
+  {
+   "f": "rhinella-marina.m4a",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "amysynusas",
+   "type": "",
+   "loc": "Queensland",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "AU",
+   "url": "https://www.inaturalist.org/sounds/1750598"
+  }
+ ],
+ "17": [
+  {
+   "f": "leptodactylus-melanonotus-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "890476",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "La Palmera (near  Aguas Zarcas), San Carlos, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/890476"
+  },
+  {
+   "f": "leptodactylus-melanonotus-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "896450",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Los Chiles, Los Chiles, Alajuela Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/896450"
+  },
+  {
+   "f": "leptodactylus-melanonotus.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Heredia",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1602730"
+  }
+ ],
+ "18": [
+  {
+   "f": "incilius-valliceps-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893982",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Caño Negro, Los Chiles, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893982"
+  },
+  {
+   "f": "incilius-valliceps.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Alajuela",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/956040"
+  }
+ ],
+ "20": [
+  {
+   "f": "scinax-elaeochroa-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893986",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Caño Negro, Los Chiles, Provincia de Alajuela",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893986"
+  },
+  {
+   "f": "scinax-elaeochroa-2.mp3",
+   "src": "Xeno-Canto",
+   "xc": "1029812",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Siquirres, Siquirres, Limón",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/1029812"
+  },
+  {
+   "f": "scinax-elaeochroa.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Limón",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/1602576"
+  }
+ ],
+ "21": [
+  {
+   "f": "craugastor-fitzingeri-1.mp3",
+   "src": "Xeno-Canto",
+   "xc": "893970",
+   "by": "Chris Harrison",
+   "type": "advertisement call",
+   "loc": "Las Horquetas, Sarapiqui, Heredia Province",
+   "lic": "CC BY-NC-SA",
+   "cc": "by-nc-sa",
+   "country": "CR",
+   "url": "https://xeno-canto.org/893970"
+  },
+  {
+   "f": "craugastor-fitzingeri.mp3",
+   "src": "iNaturalist",
+   "xc": "",
+   "by": "Chris Harrison",
+   "type": "",
+   "loc": "Heredia",
+   "lic": "CC BY-NC",
+   "cc": "",
+   "country": "CR",
+   "url": "https://www.inaturalist.org/sounds/592612"
+  }
+ ]
+}

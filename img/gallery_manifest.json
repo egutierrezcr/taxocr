@@ -1,0 +1,485 @@
+﻿{
+    "1":  [
+              {
+                  "f":  "gallery/agalychnis-callidryas-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "flecksy",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/8704234"
+              },
+              {
+                  "f":  "gallery/agalychnis-callidryas-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "paulcools",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/10699223"
+              },
+              {
+                  "f":  "gallery/agalychnis-callidryas-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "easleybirding",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/5074629"
+              }
+          ],
+    "2":  [
+              {
+                  "f":  "gallery/teratohyla-pulverata-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "romanwilli",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/115587953"
+              },
+              {
+                  "f":  "gallery/teratohyla-pulverata-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "reiniermunguia",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/124475614"
+              },
+              {
+                  "f":  "gallery/teratohyla-pulverata-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jose_conejo",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/181869755"
+              }
+          ],
+    "3":  [
+              {
+                  "f":  "gallery/dendropsophus-microcephalus-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "p8kale",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/337167941"
+              },
+              {
+                  "f":  "gallery/dendropsophus-microcephalus-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jorge_mirandaa",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/268633030"
+              },
+              {
+                  "f":  "gallery/dendropsophus-microcephalus-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "simpleynatural",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/27193774"
+              }
+          ],
+    "4":  [
+              {
+                  "f":  "gallery/smilisca-baudinii-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "bruce",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/287041995"
+              },
+              {
+                  "f":  "gallery/smilisca-baudinii-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "lichenthesespiders",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/283901174"
+              },
+              {
+                  "f":  "gallery/smilisca-baudinii-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "crawfordaj",
+                  "lic":  "CC0",
+                  "url":  "https://www.inaturalist.org/observations/12914410"
+              }
+          ],
+    "5":  [
+              {
+                  "f":  "gallery/smilisca-phaeota-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "alfredv388",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/315258180"
+              },
+              {
+                  "f":  "gallery/smilisca-phaeota-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jaymurter",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/40731579"
+              },
+              {
+                  "f":  "gallery/smilisca-phaeota-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "moises_eli",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/328851602"
+              }
+          ],
+    "6":  [
+              {
+                  "f":  "gallery/smilisca-sordida-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "tom-kirschey",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/68407718"
+              },
+              {
+                  "f":  "gallery/smilisca-sordida-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "marcemendez",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/208983950"
+              },
+              {
+                  "f":  "gallery/smilisca-sordida-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "beeworldly",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/20252263"
+              }
+          ],
+    "7":  [
+              {
+                  "f":  "gallery/dendropsophus-ebraccatus-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "kennethb96",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/278279921"
+              },
+              {
+                  "f":  "gallery/dendropsophus-ebraccatus-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "hill_jasonm",
+                  "lic":  "CC BY",
+                  "url":  "https://www.inaturalist.org/observations/9061241"
+              },
+              {
+                  "f":  "gallery/dendropsophus-ebraccatus-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "leehoy",
+                  "lic":  "CC BY-NC-ND",
+                  "url":  "https://www.inaturalist.org/observations/152561455"
+              }
+          ],
+    "8":  [
+              {
+                  "f":  "gallery/hypopachus-variolosus-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jaymurter",
+                  "lic":  "CC BY-NC-ND",
+                  "url":  "https://www.inaturalist.org/observations/64861950"
+              },
+              {
+                  "f":  "gallery/hypopachus-variolosus-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jaymurter",
+                  "lic":  "CC BY-NC-ND",
+                  "url":  "https://www.inaturalist.org/observations/64861948"
+              },
+              {
+                  "f":  "gallery/hypopachus-variolosus-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jaymurter",
+                  "lic":  "CC BY-NC-ND",
+                  "url":  "https://www.inaturalist.org/observations/64861949"
+              }
+          ],
+    "9":  [
+              {
+                  "f":  "gallery/scinax-elaeochroa-g1.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "scottboxx17",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/1636532"
+              },
+              {
+                  "f":  "gallery/scinax-elaeochroa-g2.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "lanceolatus",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/247450283"
+              },
+              {
+                  "f":  "gallery/scinax-elaeochroa-g3.jpg",
+                  "src":  "iNaturalist",
+                  "by":  "jaymurter",
+                  "lic":  "CC BY-NC",
+                  "url":  "https://www.inaturalist.org/observations/36244619"
+              }
+          ],
+    "10":  [
+               {
+                   "f":  "gallery/oophaga-pumilio-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "feliperabanal",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/54807773"
+               },
+               {
+                   "f":  "gallery/oophaga-pumilio-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "juanmacontortrix",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/194339688"
+               },
+               {
+                   "f":  "gallery/oophaga-pumilio-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jonifromulm",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/102773061"
+               }
+           ],
+    "11":  [
+               {
+                   "f":  "gallery/tlalocohyla-loquax-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "travelfardw",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/3682134"
+               },
+               {
+                   "f":  "gallery/tlalocohyla-loquax-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jgw_atx",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/238343928"
+               },
+               {
+                   "f":  "gallery/tlalocohyla-loquax-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "leslie_flint",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/7122384"
+               }
+           ],
+    "12":  [
+               {
+                   "f":  "gallery/lithobates-warszewitschii-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "floris_heemskerk",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/220993596"
+               },
+               {
+                   "f":  "gallery/lithobates-warszewitschii-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "tiwane",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/19875142"
+               },
+               {
+                   "f":  "gallery/lithobates-warszewitschii-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "geniegreenie",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/777759"
+               }
+           ],
+    "13":  [
+               {
+                   "f":  "gallery/lithobates-forreri-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "mattwelc",
+                   "lic":  "CC BY-NC-ND",
+                   "url":  "https://www.inaturalist.org/observations/45231283"
+               },
+               {
+                   "f":  "gallery/lithobates-forreri-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "antye",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/119821278"
+               },
+               {
+                   "f":  "gallery/lithobates-forreri-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "bjsmit",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/22607"
+               }
+           ],
+    "14":  [
+               {
+                   "f":  "gallery/leptodactylus-savagei-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "owlshead-wren",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/131509166"
+               },
+               {
+                   "f":  "gallery/leptodactylus-savagei-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "stazandgazer",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/272581136"
+               },
+               {
+                   "f":  "gallery/leptodactylus-savagei-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "coreyjlange",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/1480977"
+               }
+           ],
+    "15":  [
+               {
+                   "f":  "gallery/rhinella-marina-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "bankzia",
+                   "lic":  "CC0",
+                   "url":  "https://www.inaturalist.org/observations/102232195"
+               },
+               {
+                   "f":  "gallery/rhinella-marina-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "simonnicholas",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/139091838"
+               },
+               {
+                   "f":  "gallery/rhinella-marina-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "peterq",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/20442542"
+               }
+           ],
+    "16":  [
+               {
+                   "f":  "gallery/craugastor-bransfordii-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "vpellegrino",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/195133013"
+               },
+               {
+                   "f":  "gallery/craugastor-bransfordii-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "armanmoreno",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/29687414"
+               },
+               {
+                   "f":  "gallery/craugastor-bransfordii-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "edward137",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/91576570"
+               }
+           ],
+    "17":  [
+               {
+                   "f":  "gallery/leptodactylus-melanonotus-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jakeinatacc",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/145048191"
+               },
+               {
+                   "f":  "gallery/leptodactylus-melanonotus-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "sebastiaanbosma",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/123776311"
+               },
+               {
+                   "f":  "gallery/leptodactylus-melanonotus-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "peacefulsnapper",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/191605522"
+               }
+           ],
+    "18":  [
+               {
+                   "f":  "gallery/incilius-valliceps-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "sandboa",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/4281119"
+               },
+               {
+                   "f":  "gallery/incilius-valliceps-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "frogman44",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/73716695"
+               },
+               {
+                   "f":  "gallery/incilius-valliceps-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "wouterbeukema",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/199267786"
+               }
+           ],
+    "19":  [
+               {
+                   "f":  "gallery/pristimantis-ridens-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "frogman44",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/78320394"
+               },
+               {
+                   "f":  "gallery/pristimantis-ridens-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "antye",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/119074949"
+               },
+               {
+                   "f":  "gallery/pristimantis-ridens-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "meilin8",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/366322348"
+               }
+           ],
+    "21":  [
+               {
+                   "f":  "gallery/craugastor-fitzingeri-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jdurannat",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/146659133"
+               },
+               {
+                   "f":  "gallery/craugastor-fitzingeri-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "tomkennedy",
+                   "lic":  "CC BY",
+                   "url":  "https://www.inaturalist.org/observations/102890081"
+               },
+               {
+                   "f":  "gallery/craugastor-fitzingeri-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jdwillson",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/68903775"
+               }
+           ],
+    "20":  [
+               {
+                   "f":  "gallery/scinax-elaeochroa-g1.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "scottboxx17",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/1636532"
+               },
+               {
+                   "f":  "gallery/scinax-elaeochroa-g2.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "lanceolatus",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/247450283"
+               },
+               {
+                   "f":  "gallery/scinax-elaeochroa-g3.jpg",
+                   "src":  "iNaturalist",
+                   "by":  "jaymurter",
+                   "lic":  "CC BY-NC",
+                   "url":  "https://www.inaturalist.org/observations/36244619"
+               }
+           ]
+}

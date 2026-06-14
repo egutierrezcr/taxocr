@@ -1,0 +1,22 @@
+{
+  "collection": "Colección Kevin Lovato",
+  "author": "Kevin Lovato",
+  "description": {
+    "es": "Colección de biodiversidad de Costa Rica documentada por Kevin Lovato.",
+    "en": "Costa Rica biodiversity collection documented by Kevin Lovato.",
+    "fr": "Collection de biodiversité du Costa Rica documentée par Kevin Lovato."
+  },
+  "languages": ["es", "en", "fr"],
+  "locations": [
+    {
+      "id": "arboreo-bijagua",
+      "name": "Arbóreo",
+      "area": "Bijagua",
+      "province": "Alajuela",
+      "region": "zona-norte",
+      "coords": [10.74, -85.05],
+      "active": true
+    }
+  ],
+  "regions": ["pacifico-norte", "pacifico-central", "pacifico-sur", "zona-norte", "caribe"]
+}
