@@ -9,6 +9,7 @@
 |---|---|
 | #1 Agalychnis callidryas — Rana de Ojos Rojos | `models/agalychnis-callidryas.glb` |
 | #8 Hypopachus variolosus — Rana Oveja Común | `models/hypopachus-variolosus.glb` |
+| #10 Oophaga pumilio — Rana Flecha Roja y Azul | `models/oophaga-pumilio.glb` |
 
 ## ⚠️ TENTATIVAS (por confirmar)
 | Asignado a | Archivo original | Archivo |
@@ -17,6 +18,7 @@
 | #6 Smilisca sordida — Rana Arb. Parda | `frog(3)` (oliva/gris) | `models/smilisca-sordida.glb` |
 | #11 Tlalocohyla loquax — Rana Arbórea Locuaz | `yellow frog 3d model` | `models/tlalocohyla-loquax.glb` |
 | #14 Leptodactylus savagei — Rana Toro | `frog` / `frog(2)` (rojizo) | `models/leptodactylus-savagei.glb` |
+| #7 Dendropsophus ebraccatus — Rana Arb. Amarillenta | `orange frog 3d model` | `models/dendropsophus-ebraccatus.glb` |
 
 ## 🔁 Notas
 - `frog.txt` y `frog(2).txt` eran **idénticos** (mismo modelo) → se usó uno.
