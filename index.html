@@ -21,9 +21,21 @@
   --font-sci:'EB Garamond','Times New Roman',serif;
   --font-mono:'JetBrains Mono',monospace;
   --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.07);
+  --map-water:#dceff4;--map-land:#f3f0e8;--threed-bg:linear-gradient(160deg,#eef3ee,#dfe9e0);
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#0f1318;--bg2:#161b22;--surface:#1b222b;--surface2:#212a34;
+  --border:#313b46;--border2:#28313b;
+  --text:#e9ecf0;--text2:#a9b2bd;--text3:#7b8693;
+  --green:#5fb88f;--green2:#74c69d;--green3:#163124;
+  --red:#e2787d;--gold:#d8ab3e;--blue:#7aa6dd;--cyan:#40bdd6;
+  --shadow:0 2px 18px rgba(0,0,0,.45);
+  --map-water:#14202a;--map-land:#222b35;--threed-bg:linear-gradient(160deg,#1a2128,#141a20);
+  color-scheme:dark;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65;transition:background .3s,color .3s}
 h1,h2,h3{font-family:var(--font-head)}
 a{color:var(--green);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -33,9 +45,14 @@ img{max-width:100%;display:block}
 /* Header */
 header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .header-inner{max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.logo{display:flex;align-items:baseline;gap:10px}
-.logo h1{font-size:22px;font-weight:700;color:var(--green)}
-.logo .sub{font-size:12px;color:var(--text3);font-family:var(--font-body);font-weight:400;letter-spacing:.5px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{font-size:26px;line-height:1}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.kicker{font-size:9px;text-transform:uppercase;letter-spacing:1.6px;color:var(--gold);font-weight:700}
+.logo h1{font-size:20px;font-weight:700;color:var(--green)}
+.logo .sub{font-size:11px;color:var(--text3);font-family:var(--font-body);font-weight:400;letter-spacing:.4px}
+.icon-btn{width:34px;height:34px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;transition:.2s;flex-shrink:0;color:var(--text)}
+.icon-btn:hover{background:var(--bg2);border-color:var(--green)}
 .lang-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-left:auto}
 .lang-btn{padding:6px 12px;font-size:12px;font-weight:600;transition:.2s;border-right:1px solid var(--border)}
 .lang-btn:last-child{border-right:none}
@@ -114,9 +131,16 @@ header{background:var(--surface);border-bottom:1px solid var(--border);position:
 .vtab-3d[disabled]{opacity:.5;cursor:not-allowed}
 .vtab-3d:not([disabled]){cursor:pointer}
 .vtab-new{background:var(--red)!important;color:#fff!important;font-size:8px!important;letter-spacing:.5px}
-.det-3d-wrap{position:relative;width:100%;aspect-ratio:4/3;background:linear-gradient(160deg,#eef3ee,#dfe9e0)}
+.det-3d-wrap{position:relative;width:100%;aspect-ratio:4/3;background:var(--threed-bg)}
 .det-3d-wrap model-viewer{width:100%;height:100%;--poster-color:transparent}
 .det-3d-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--text2);background:rgba(255,255,255,.8);padding:2px 8px;border-radius:10px;backdrop-filter:blur(4px);pointer-events:none}
+[data-theme="dark"] .det-3d-hint{background:rgba(0,0,0,.5);color:#cfd6dd}
+.det-3d-sound{position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.5);padding:4px 9px 4px 4px;border-radius:20px;backdrop-filter:blur(4px)}
+.d3-snd-btn{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:14px;transition:.2s;color:#1a1a2e}
+.d3-snd-btn:hover{background:var(--green);color:#fff}
+.d3-snd-btn.playing{background:var(--green);color:#fff;animation:pulse-ring 1.5s infinite}
+.d3-snd-loop{display:flex;align-items:center;gap:3px;font-size:12px;color:#fff;cursor:pointer;user-select:none}
+.d3-snd-loop input{cursor:pointer;accent-color:var(--green2)}
 .det-3d-loading{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text3);background:var(--surface2)}
 .photo-count{position:absolute;bottom:8px;left:8px;font-size:11px;font-family:var(--font-mono);background:rgba(255,255,255,.85);padding:1px 7px;border-radius:4px;color:var(--text2);backdrop-filter:blur(4px)}
 .det-photo-credit{font-size:10px;color:var(--text3);padding:6px 10px;background:var(--surface2);border-top:1px solid var(--border2)}
@@ -233,19 +257,25 @@ footer{text-align:center;padding:32px 24px;color:var(--text3);font-size:12px;bor
   header .search-box{min-width:100%}
 }
 </style>
+<script>try{var _t=localStorage.getItem('anfibios-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 </head>
 <body>
 <header>
  <div class="header-inner">
   <div class="logo">
-   <h1 data-t="title">Anfibios de Costa Rica</h1>
-   <span class="sub" data-t="subtitle">Guía Natural Interactiva</span>
+   <span class="logo-mark">🐸</span>
+   <div class="logo-text">
+    <span class="kicker">Colección Kevin Lovato</span>
+    <h1 data-t="title">Anfibios de Costa Rica</h1>
+    <span class="sub" data-t="subtitle">Guía Natural Interactiva</span>
+   </div>
   </div>
   <div class="lang-toggle">
    <button class="lang-btn active" data-lang="es">ES</button>
    <button class="lang-btn" data-lang="en">EN</button>
-   <button class="lang-btn" data-lang="fr">FR</button>
+   <button class="lang-btn" data-lang="fr">FR</button><button class="lang-btn" data-lang="de">DE</button>
   </div>
+  <button class="icon-btn theme-toggle" id="theme-toggle" title="Tema claro/oscuro" aria-label="Tema">🌙</button>
   <nav class="nav-views">
    <button class="nav-btn active" data-view="grid" data-t="catalog">Catálogo</button>
    <button class="nav-btn" data-view="list" data-t="fieldGuide">Guía de Campo</button>
@@ -285,7 +315,7 @@ footer{text-align:center;padding:32px 24px;color:var(--text3);font-size:12px;bor
    <div class="lang-toggle det-lang">
     <button class="lang-btn" data-lang="es">ES</button>
     <button class="lang-btn" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="fr">FR</button><button class="lang-btn" data-lang="de">DE</button>
    </div>
    <div class="det-arrows">
     <button class="det-arrow" id="det-prev">◀</button>
@@ -318,7 +348,8 @@ footer{text-align:center;padding:32px 24px;color:var(--text3);font-size:12px;bor
 const UI = {
  es:{title:"Anfibios de Costa Rica",subtitle:"Guía Natural Interactiva",catalog:"Catálogo",fieldGuide:"Guía de Campo",searchPh:"Buscar especie...",speciesReg:"especies registradas",families:"familias",all:"Todos",frogs:"Ranas",toads:"Sapos",nocturnal:"Nocturnos",diurnal:"Diurnos",toxic:"Tóxicos",bioData:"Datos Biológicos",sciName:"Nombre científico",engName:"Nombre en inglés",family:"Familia",order:"Orden",sizeSVL:"Tamaño (SVL)",elevation:"Elevación",habitat:"Hábitat",activity:"Actividad",diet:"Dieta",iucnStatus:"Estado UICN",description:"Descripción",anatomy:"Anatomía",sound:"Sonido / Canto",callType:"Tipo de canto",frequency:"Frecuencia",listenXC:"Escuchar en Xeno-Canto",appCROAC:"App CROAC (CR)",sizeComp:"Comparación de Tamaño",avgSize:"Tamaño promedio",range:"Rango",distribution:"Distribución en Costa Rica",provinces:"Provincias",elevRange:"Rango altitudinal",nocturnalTag:"Nocturno",diurnalTag:"Diurno",arboreal:"Arbóreo",terrestrial:"Terrestre",toxicTag:"Tóxico",leastConcern:"Preocupación Menor",dataDeficient:"Datos Insuficientes",fieldGuideTitle:"Guía de Campo Sonora",fieldGuideSub:"Reproduce los cantos para identificación en campo",footerLine1:"Anfibios de Costa Rica — Guía Natural Interactiva",footerLine2:"Fotografías: Registro de Anfibios de Costa Rica · Sonidos: Xeno-Canto / CROAC",eyes:"Ojos",skin:"Piel",legs:"Patas",bodyA:"Cuerpo",corrected:"Corregido",pending:"Pendiente"},
  en:{title:"Amphibians of Costa Rica",subtitle:"Interactive Natural Guide",catalog:"Catalog",fieldGuide:"Field Guide",searchPh:"Search species...",speciesReg:"species registered",families:"families",all:"All",frogs:"Frogs",toads:"Toads",nocturnal:"Nocturnal",diurnal:"Diurnal",toxic:"Toxic",bioData:"Biological Data",sciName:"Scientific name",engName:"English name",family:"Family",order:"Order",sizeSVL:"Size (SVL)",elevation:"Elevation",habitat:"Habitat",activity:"Activity",diet:"Diet",iucnStatus:"IUCN Status",description:"Description",anatomy:"Anatomy",sound:"Sound / Call",callType:"Call type",frequency:"Frequency",listenXC:"Listen on Xeno-Canto",appCROAC:"CROAC App (CR)",sizeComp:"Size Comparison",avgSize:"Average size",range:"Range",distribution:"Distribution in Costa Rica",provinces:"Provinces",elevRange:"Elevation range",nocturnalTag:"Nocturnal",diurnalTag:"Diurnal",arboreal:"Arboreal",terrestrial:"Terrestrial",toxicTag:"Toxic",leastConcern:"Least Concern",dataDeficient:"Data Deficient",fieldGuideTitle:"Sound Field Guide",fieldGuideSub:"Play calls for field identification",footerLine1:"Amphibians of Costa Rica — Interactive Natural Guide",footerLine2:"Photos: Costa Rica Amphibian Registry · Sounds: Xeno-Canto / CROAC",eyes:"Eyes",skin:"Skin",legs:"Legs",bodyA:"Body",corrected:"Corrected",pending:"Pending"},
- fr:{title:"Amphibiens du Costa Rica",subtitle:"Guide Naturel Interactif",catalog:"Catalogue",fieldGuide:"Guide de Terrain",searchPh:"Rechercher une espèce...",speciesReg:"espèces enregistrées",families:"familles",all:"Tous",frogs:"Grenouilles",toads:"Crapauds",nocturnal:"Nocturnes",diurnal:"Diurnes",toxic:"Toxiques",bioData:"Données Biologiques",sciName:"Nom scientifique",engName:"Nom anglais",family:"Famille",order:"Ordre",sizeSVL:"Taille (SVL)",elevation:"Altitude",habitat:"Habitat",activity:"Activité",diet:"Régime",iucnStatus:"Statut UICN",description:"Description",anatomy:"Anatomie",sound:"Son / Chant",callType:"Type de chant",frequency:"Fréquence",listenXC:"Écouter sur Xeno-Canto",appCROAC:"App CROAC (CR)",sizeComp:"Comparaison de Taille",avgSize:"Taille moyenne",range:"Intervalle",distribution:"Distribution au Costa Rica",provinces:"Provinces",elevRange:"Intervalle altitudinal",nocturnalTag:"Nocturne",diurnalTag:"Diurne",arboreal:"Arboricole",terrestrial:"Terrestre",toxicTag:"Toxique",leastConcern:"Préoccupation Mineure",dataDeficient:"Données Insuffisantes",fieldGuideTitle:"Guide Sonore de Terrain",fieldGuideSub:"Écoutez les chants pour identification sur le terrain",footerLine1:"Amphibiens du Costa Rica — Guide Naturel Interactif",footerLine2:"Photos : Registre des Amphibiens du Costa Rica · Sons : Xeno-Canto / CROAC",eyes:"Yeux",skin:"Peau",legs:"Pattes",bodyA:"Corps",corrected:"Corrigé",pending:"En attente"}
+ fr:{title:"Amphibiens du Costa Rica",subtitle:"Guide Naturel Interactif",catalog:"Catalogue",fieldGuide:"Guide de Terrain",searchPh:"Rechercher une espèce...",speciesReg:"espèces enregistrées",families:"familles",all:"Tous",frogs:"Grenouilles",toads:"Crapauds",nocturnal:"Nocturnes",diurnal:"Diurnes",toxic:"Toxiques",bioData:"Données Biologiques",sciName:"Nom scientifique",engName:"Nom anglais",family:"Famille",order:"Ordre",sizeSVL:"Taille (SVL)",elevation:"Altitude",habitat:"Habitat",activity:"Activité",diet:"Régime",iucnStatus:"Statut UICN",description:"Description",anatomy:"Anatomie",sound:"Son / Chant",callType:"Type de chant",frequency:"Fréquence",listenXC:"Écouter sur Xeno-Canto",appCROAC:"App CROAC (CR)",sizeComp:"Comparaison de Taille",avgSize:"Taille moyenne",range:"Intervalle",distribution:"Distribution au Costa Rica",provinces:"Provinces",elevRange:"Intervalle altitudinal",nocturnalTag:"Nocturne",diurnalTag:"Diurne",arboreal:"Arboricole",terrestrial:"Terrestre",toxicTag:"Toxique",leastConcern:"Préoccupation Mineure",dataDeficient:"Données Insuffisantes",fieldGuideTitle:"Guide Sonore de Terrain",fieldGuideSub:"Écoutez les chants pour identification sur le terrain",footerLine1:"Amphibiens du Costa Rica — Guide Naturel Interactif",footerLine2:"Photos : Registre des Amphibiens du Costa Rica · Sons : Xeno-Canto / CROAC",eyes:"Yeux",skin:"Peau",legs:"Pattes",bodyA:"Corps",corrected:"Corrigé",pending:"En attente"},
+ de:{title:"Amphibien von Costa Rica",subtitle:"Interaktiver Naturführer",catalog:"Katalog",fieldGuide:"Feldführer",searchPh:"Art suchen...",speciesReg:"erfasste Arten",families:"Familien",all:"Alle",frogs:"Frösche",toads:"Kröten",nocturnal:"Nachtaktiv",diurnal:"Tagaktiv",toxic:"Giftig",bioData:"Biologische Daten",sciName:"Wissenschaftlicher Name",engName:"Englischer Name",family:"Familie",order:"Ordnung",sizeSVL:"Größe (KRL)",elevation:"Höhe",habitat:"Lebensraum",activity:"Aktivität",diet:"Ernährung",iucnStatus:"IUCN-Status",description:"Beschreibung",anatomy:"Anatomie",sound:"Ruf / Gesang",callType:"Ruftyp",frequency:"Frequenz",listenXC:"Auf Xeno-Canto anhören",appCROAC:"CROAC App (CR)",sizeComp:"Größenvergleich",avgSize:"Durchschnittsgröße",range:"Bereich",distribution:"Verbreitung in Costa Rica",provinces:"Provinzen",elevRange:"Höhenbereich",nocturnalTag:"Nachtaktiv",diurnalTag:"Tagaktiv",arboreal:"Baumbewohnend",terrestrial:"Bodenbewohnend",toxicTag:"Giftig",leastConcern:"Nicht gefährdet",dataDeficient:"Ungenügende Daten",fieldGuideTitle:"Akustischer Feldführer",fieldGuideSub:"Rufe zur Bestimmung im Feld abspielen",footerLine1:"Amphibien von Costa Rica — Interaktiver Naturführer",footerLine2:"Fotos: Amphibien-Register Costa Rica · Klänge: Xeno-Canto / iNaturalist (CC)",eyes:"Augen",skin:"Haut",legs:"Beine",bodyA:"Körper",corrected:"Korrigiert",pending:"Ausstehend"}
 };
 // Extra keys for the local audio player (added separately to keep the blocks above readable)
 UI.es.noAudio="No hay grabación disponible para esta especie todavía.";
@@ -331,9 +362,16 @@ UI.es.photoRegistry="Registro fotográfico de Anfibios de Costa Rica"; UI.en.pho
 UI.es.soon3d="Próximamente: modelo 3D entrenado con múltiples imágenes"; UI.en.soon3d="Coming soon: 3D model trained from multiple images"; UI.fr.soon3d="Bientôt : modèle 3D entraîné à partir de plusieurs images";
 UI.es.viewObs="ver"; UI.en.viewObs="view"; UI.fr.viewObs="voir";
 UI.es.drag3d="Arrastra para rotar · rueda para zoom"; UI.en.drag3d="Drag to rotate · scroll to zoom"; UI.fr.drag3d="Glisser pour tourner · molette pour zoomer";
+UI.es.loop="Repetir canto"; UI.en.loop="Loop call"; UI.fr.loop="Répéter le chant";
 UI.es.footerLine2="Fotografías: Registro de Anfibios de Costa Rica · Sonidos: Xeno-Canto e iNaturalist (CC)";
 UI.en.footerLine2="Photos: Costa Rica Amphibian Registry · Sounds: Xeno-Canto & iNaturalist (CC)";
 UI.fr.footerLine2="Photos : Registre des Amphibiens du Costa Rica · Sons : Xeno-Canto et iNaturalist (CC)";
+UI.de.noAudio="Für diese Art ist noch keine Aufnahme verfügbar.";
+UI.de.recordings="Aufnahmen"; UI.de.playCall="Ruf abspielen"; UI.de.photos="Fotos";
+UI.de.photoRegistry="Fotografisches Register der Amphibien Costa Ricas";
+UI.de.soon3d="Demnächst: 3D-Modell aus mehreren Bildern"; UI.de.viewObs="ansehen";
+UI.de.drag3d="Ziehen zum Drehen · Scrollen zum Zoomen"; UI.de.loop="Ruf wiederholen";
+UI.de.footerLine2="Fotos: Amphibien-Register Costa Rica · Klänge: Xeno-Canto & iNaturalist (CC)";
 let lang = 'es';
 function t(k){ return UI[lang][k] || UI.es[k] || k }
 
@@ -490,17 +528,40 @@ function photoBodyHTML(s){
 function model3DHTML(s){
   const m = MODELS[s.id];
   const note = m.note ? (m.note[lang] || m.note.es) : '';
+  const hasSnd = !!(AUDIO[s.id] && AUDIO[s.id].length);
   return `<div class="det-3d-wrap">
       <model-viewer src="models/${m.f}" alt="${s.n[lang]}" camera-controls auto-rotate rotation-per-second="18deg"
         touch-action="pan-y" shadow-intensity="1" exposure="1.1" environment-image="neutral"
         ${m.anim?`animation-name="${m.anim}" autoplay`:''}
         ar ar-modes="webxr scene-viewer quick-look" loading="eager" reveal="auto"></model-viewer>
       <span class="det-3d-hint">🖱️ ${t('drag3d')}</span>
+      ${hasSnd?`<div class="det-3d-sound">
+        <button class="d3-snd-btn" id="d3-snd-btn" onclick="toggle3dSound(${s.id})" title="${t('playCall')}">🔊</button>
+        <label class="d3-snd-loop" title="${t('loop')}"><input type="checkbox" id="d3-loop" onchange="window.set3dLoop(this.checked)"> 🔁</label>
+      </div>`:''}
     </div>
     <div class="det-photo-credit">🧊 ${note?note+' · ':''}© ${m.by} · ${m.lic} · ${m.src}</div>`;
 }
+// Audio inside the 3D view (play once, or loop if 🔁 checked)
+const d3audio = new Audio();
+window.toggle3dSound = (id) => {
+  const recs = AUDIO[id]; if(!recs || !recs.length) return;
+  if(!d3audio.paused){ d3audio.pause(); return; }
+  document.querySelectorAll('#det-snd audio').forEach(a=>a.pause());
+  audioEl.pause(); clearPlaying(); qsFile=null;
+  const loop = document.getElementById('d3-loop');
+  d3audio.src = 'audio/'+recs[0].f;
+  d3audio.loop = loop ? loop.checked : false;
+  d3audio.play().catch(()=>{});
+};
+window.set3dLoop = v => { d3audio.loop = v; };
+function d3btn(state){ const b=document.getElementById('d3-snd-btn'); if(!b) return; b.textContent = state==='play'?'⏸':'🔊'; b.classList.toggle('playing', state==='play'); }
+d3audio.addEventListener('play', () => d3btn('play'));
+d3audio.addEventListener('pause', () => d3btn('stop'));
+d3audio.addEventListener('ended', () => d3btn('stop'));
 window.vtab = async (mode) => {
   const s = SP[curIdx]; if (!s) return;
+  d3audio.pause();
   const tabs = document.querySelectorAll('#det-photo .vtab');
   const body = document.getElementById('det-viewer-body');
   if (mode === '3d') {
@@ -667,7 +728,7 @@ window.D = function(id) {
   document.getElementById('detail').scrollTop = 0;
 };
 
-window.closeD = () => document.getElementById('detail').classList.remove('open');
+window.closeD = () => { d3audio.pause(); audioEl.pause(); document.getElementById('detail').classList.remove('open'); };
 window.navSp = d => { let i = curIdx+d; if(i<0) i=SP.length-1; if(i>=SP.length) i=0; D(SP[i].id); };
 
 // Photo navigation
@@ -721,8 +782,8 @@ function renderMap(s) {
     <div class="map-wrap">
       <div class="map-svg"><svg viewBox="0 0 ${MAP_VBW} ${MAP_VBH}" xmlns="http://www.w3.org/2000/svg">
         <defs><clipPath id="crclip"><path d="${countryD}"/></clipPath></defs>
-        <rect x="0" y="0" width="${MAP_VBW}" height="${MAP_VBH}" fill="#dceff4" rx="6"/>
-        <path d="${countryD}" fill="#f3f0e8"/>
+        <rect x="0" y="0" width="${MAP_VBW}" height="${MAP_VBH}" fill="var(--map-water)" rx="6"/>
+        <path d="${countryD}" fill="var(--map-land)"/>
         ${regionPaths}
         <path d="${countryD}" fill="none" stroke="#2d3a35" stroke-width="1.6" stroke-linejoin="round"/>
         ${labels}
@@ -765,6 +826,7 @@ document.addEventListener('play', e => {
   if(e.target.tagName==='AUDIO'){
     document.querySelectorAll('audio').forEach(a => { if(a!==e.target) a.pause(); });
     if(audioEl!==e.target){ audioEl.pause(); clearPlaying(); qsFile=null; }
+    if(d3audio!==e.target){ d3audio.pause(); }
   }
 }, true);
 
@@ -782,6 +844,25 @@ function applyLang() {
   const det = document.getElementById('detail');
   if(det.classList.contains('open') && curIdx>=0){ const sc=det.scrollTop; D(SP[curIdx].id); det.scrollTop=sc; }
 }
+
+// ======================================================
+// THEME (light / dark)
+// ======================================================
+function applyTheme(th){
+  document.documentElement.setAttribute('data-theme', th);
+  const btn = document.getElementById('theme-toggle');
+  if(btn) btn.textContent = th==='dark' ? '☀️' : '🌙';
+  try { localStorage.setItem('anfibios-theme', th); } catch(e){}
+}
+function initTheme(){
+  let th; try { th = localStorage.getItem('anfibios-theme'); } catch(e){}
+  if(!th) th = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  applyTheme(th);
+}
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme')==='dark' ? 'dark' : 'light';
+  applyTheme(cur==='dark' ? 'light' : 'dark');
+});
 
 // ======================================================
 // EVENTS
@@ -813,7 +894,14 @@ document.addEventListener('keydown', e => {
 // ======================================================
 // INIT
 // ======================================================
+// German fallback: species biology uses English where no DE provided; regions get German names
+SP.forEach(s => { for(const k in s){ const v=s[k]; if(v && typeof v==='object' && !Array.isArray(v) && 'en' in v && !('de' in v)) v.de=v.en; } });
+Object.values(REGIONS).forEach(v=>{ if(!('de' in v)) v.de=v.en; });
+Object.values(SLOPES).forEach(v=>{ if(!('de' in v)) v.de=v.en; });
+REGIONS.pn.de="Nordpazifik"; REGIONS.pc.de="Zentralpazifik"; REGIONS.ps.de="Südpazifik"; REGIONS.zn.de="Nördliche Zone"; REGIONS.ca.de="Karibik";
+SLOPES.pac.de="Pazifische Abdachung"; SLOPES.car.de="Karibische Abdachung";
 await Promise.all([loadAudioManifest(), loadGalleryManifest()]);
+initTheme();
 applyLang();
 </script>
 </body>
